@@ -42,4 +42,7 @@ public class Objects extends PrimaryBase {
 
     @Column(name = "key")
     private String key;
+
+    @Column(name = "parent_id")
+    private Long parentId;
 }
