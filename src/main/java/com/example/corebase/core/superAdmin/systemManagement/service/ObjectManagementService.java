@@ -7,4 +7,5 @@ import com.example.corebase.infrastructure.constant.TypeObjects;
 
 public interface ObjectManagementService {
     PageableObject<Objects> getAllObjects(ObjectManagementFilterRequest objectManagementFilterRequest);
+    Objects createOrUpdateObjects(Objects objects);
 }

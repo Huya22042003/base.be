@@ -20,4 +20,9 @@ public class ObjectManagementServiceImpl implements ObjectManagementService {
     public PageableObject<Objects> getAllObjects(ObjectManagementFilterRequest request) {
         return new PageableObject<>(repository.findByCodeContainsAndNameContainsAndTypeAndOrderBy(request, request.getPageable()));
     }
+
+    @Override
+    public Objects createOrUpdateObjects(Objects objects) {
+        return repository.save(objects);
+    }
 }
