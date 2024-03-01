@@ -41,7 +41,8 @@ public class MenuManagementServiceImpl implements MenuManagementService {
         for (MenuLoginResponse el : menuList) {
             if (el.getParentId() == null) {
                 MenuLoginResponseImpl node = new MenuLoginResponseImpl(el.getId(), el.getCode(),
-                        languageCommon.getMessageProperties(el.getKey()), el.getUrl(),
+                        languageCommon.getMessageProperties(el.getKey()) == "" ?
+                                el.getName() : languageCommon.getMessageProperties(el.getKey()), el.getUrl(),
                         new ArrayList<>(), el.getOrderBy(), el.getParentId());
                 menuTree.add(node);
             }

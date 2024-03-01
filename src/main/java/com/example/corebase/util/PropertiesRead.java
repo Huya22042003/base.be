@@ -58,15 +58,20 @@ public class PropertiesRead {
      */
 
     public static String getProperty(String propertyName, String propertiesType) {
-        switch (propertiesType) {
-            case Constants.FileProperties.PROPERTIES_APPLICATION:
-                return applicationProperties.getProperty(propertyName);
-            case Constants.FileProperties.PROPERTIES_MESSAGE_VN:
-                return messageVnProperties.getProperty(propertyName);
-            case Constants.FileProperties.PROPERTIES_MESSAGE_EN:
-                return messageEnProperties.getProperty(propertyName);
-            default:
-                return null;
+        try {
+            switch (propertiesType) {
+                case Constants.FileProperties.PROPERTIES_APPLICATION:
+                    return applicationProperties.getProperty(propertyName);
+                case Constants.FileProperties.PROPERTIES_MESSAGE_VN:
+                    return messageVnProperties.getProperty(propertyName);
+                case Constants.FileProperties.PROPERTIES_MESSAGE_EN:
+                    return messageEnProperties.getProperty(propertyName);
+                default:
+                    return null;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "";
         }
     }
 }
