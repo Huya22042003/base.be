@@ -3,7 +3,7 @@ package com.example.corebase.core.superAdmin.premiumManagement.controller;
 import com.example.corebase.core.base.model.ResponseObject;
 import com.example.corebase.core.superAdmin.premiumManagement.model.request.PremiumTypeFilterRequest;
 import com.example.corebase.core.superAdmin.premiumManagement.service.PremiumManagementService;
-import com.example.corebase.entity.PremiumTypes;
+import com.example.corebase.entity.PremiumTypesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,12 +29,12 @@ public class PremiumManagementController {
     }
 
     @PostMapping
-    public ResponseObject createPremium(@RequestBody PremiumTypes types) {
+    public ResponseObject createPremium(@RequestBody PremiumTypesEntity types) {
         return new ResponseObject(service.createPremiumType(types));
     }
 
     @PutMapping
-    public ResponseObject updatePremium(@RequestBody PremiumTypes types) {
+    public ResponseObject updatePremium(@RequestBody PremiumTypesEntity types) {
         return new ResponseObject(service.updatePremiumType(types));
     }
 

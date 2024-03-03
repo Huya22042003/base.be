@@ -3,7 +3,7 @@ package com.example.corebase.core.superAdmin.systemManagement.controller;
 import com.example.corebase.core.base.model.ResponseObject;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.ObjectManagementFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.service.ObjectManagementService;
-import com.example.corebase.entity.Objects;
+import com.example.corebase.entity.ObjectsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +25,7 @@ public class ObjectManagementController {
     }
 
     @PostMapping
-    public ResponseObject createOrUpdateObjectManagement(Objects objects) {
-        return new ResponseObject(service.createOrUpdateObjects(objects));
+    public ResponseObject createOrUpdateObjectManagement(ObjectsEntity objectsEntity) {
+        return new ResponseObject(service.createOrUpdateObjects(objectsEntity));
     }
 }

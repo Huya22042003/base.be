@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,21 +19,17 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class Users extends PrimaryBase {
+@Table(name = "user_object")
+public class UserObjectEntity extends PrimaryBase {
 
-    @Column(name = "username")
-    private String userName;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private UsersEntity userid;
 
-    @Column(name = "password")
-    private String password;
-
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "full_name")
-    private String fullName;
+    @ManyToOne
+    @JoinColumn(name = "object_id")
+    private ObjectsEntity objectId;
 
     @Column(name = "is_active")
     private ActiveStatus isActive;
-
 }

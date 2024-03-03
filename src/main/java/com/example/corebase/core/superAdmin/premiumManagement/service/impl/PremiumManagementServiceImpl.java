@@ -4,7 +4,7 @@ import com.example.corebase.core.base.model.PageableObject;
 import com.example.corebase.core.superAdmin.premiumManagement.model.request.PremiumTypeFilterRequest;
 import com.example.corebase.core.superAdmin.premiumManagement.repository.PremiumManagementRepository;
 import com.example.corebase.core.superAdmin.premiumManagement.service.PremiumManagementService;
-import com.example.corebase.entity.PremiumTypes;
+import com.example.corebase.entity.PremiumTypesEntity;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,24 +18,24 @@ public class PremiumManagementServiceImpl implements PremiumManagementService {
     private PremiumManagementRepository repository;
 
     @Override
-    public PageableObject<PremiumTypes> getAllPremiumType(PremiumTypeFilterRequest request) {
+    public PageableObject<PremiumTypesEntity> getAllPremiumType(PremiumTypeFilterRequest request) {
         return new PageableObject<>(repository.findAllByCodeContainingAndNameContaining(request.getCode(), request.getName(), request.getPageable()));
     }
 
     @Override
-    public PremiumTypes createPremiumType(PremiumTypes premiumTypes) {
-        return repository.save(premiumTypes);
+    public PremiumTypesEntity createPremiumType(PremiumTypesEntity premiumTypesEntity) {
+        return repository.save(premiumTypesEntity);
     }
 
     @Override
-    public PremiumTypes updatePremiumType(PremiumTypes premiumTypes) {
-        return repository.save(premiumTypes);
+    public PremiumTypesEntity updatePremiumType(PremiumTypesEntity premiumTypesEntity) {
+        return repository.save(premiumTypesEntity);
     }
 
     @Override
-    public PremiumTypes deletePremiumType(Long id) {
-        PremiumTypes premiumTypes = repository.findById(id).get();
-        premiumTypes.setIsActive(ActiveStatus.NOT_ACTIVE);
-        return repository.save(premiumTypes);
+    public PremiumTypesEntity deletePremiumType(Long id) {
+        PremiumTypesEntity premiumTypesEntity = repository.findById(id).get();
+        premiumTypesEntity.setIsActive(ActiveStatus.NOT_ACTIVE);
+        return repository.save(premiumTypesEntity);
     }
 }

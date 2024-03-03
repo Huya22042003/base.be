@@ -3,7 +3,7 @@ package com.example.corebase.core.base.service.impl;
 import com.example.corebase.core.base.model.AuthLoginService;
 import com.example.corebase.core.base.model.ObjectDto;
 import com.example.corebase.core.base.service.BaseService;
-import com.example.corebase.entity.Objects;
+import com.example.corebase.entity.ObjectsEntity;
 import com.example.corebase.repository.ObjectsRepository;
 import com.example.corebase.util.LanguageCommon;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class BaseServiceImpl implements BaseService {
 
     @Override
     public List<ObjectDto> getListObjectByUser() {
-        List<Objects> list = objectsRepository.getObjectsByIdUsers(authLoginService.getAuth().getId());
+        List<ObjectsEntity> list = objectsRepository.getObjectsByIdUsers(authLoginService.getAuth().getId());
         List<ObjectDto> response = list.stream().map(el ->
                 new ObjectDto(languageCommon.getMessageProperties(el.getKey()), el.getIcons(), el.getUrl()))
         .collect(Collectors.toList());

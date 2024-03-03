@@ -1,11 +1,10 @@
 package com.example.corebase.core.base.model;
 
-import com.example.corebase.entity.Users;
+import com.example.corebase.entity.UsersEntity;
 import com.example.corebase.infrastructure.constant.SessionConstant;
 import com.example.corebase.repository.UsersRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -43,7 +42,7 @@ public class AuthLoginServiceImpl implements AuthLoginService {
     }
 
     @Override
-    public Users getAuth() {
+    public UsersEntity getAuth() {
         return usersRepository.findById(1L).get();
     }
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
+
 @Getter
 @Setter
 @MappedSuperclass
@@ -14,8 +16,14 @@ import lombok.Setter;
 public abstract class AuditEntity {
 
     @Column(updatable = false)
-    private Long createdDate;
+    private Date createdDate;
 
     @Column
-    private Long lastModifiedDate;
+    private Date lastModifiedDate;
+
+    @Column(updatable = false)
+    private Long createdBy;
+
+    @Column
+    private Long lastModifiedBy;
 }

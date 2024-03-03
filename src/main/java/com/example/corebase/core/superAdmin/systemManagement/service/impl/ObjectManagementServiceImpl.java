@@ -4,7 +4,7 @@ import com.example.corebase.core.base.model.PageableObject;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.ObjectManagementFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.repository.ObjectManagementRepository;
 import com.example.corebase.core.superAdmin.systemManagement.service.ObjectManagementService;
-import com.example.corebase.entity.Objects;
+import com.example.corebase.entity.ObjectsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -17,12 +17,12 @@ public class ObjectManagementServiceImpl implements ObjectManagementService {
     private ObjectManagementRepository repository;
 
     @Override
-    public PageableObject<Objects> getAllObjects(ObjectManagementFilterRequest request) {
+    public PageableObject<ObjectsEntity> getAllObjects(ObjectManagementFilterRequest request) {
         return new PageableObject<>(repository.findByCodeContainsAndNameContainsAndTypeAndOrderBy(request, request.getPageable()));
     }
 
     @Override
-    public Objects createOrUpdateObjects(Objects objects) {
-        return repository.save(objects);
+    public ObjectsEntity createOrUpdateObjects(ObjectsEntity objectsEntity) {
+        return repository.save(objectsEntity);
     }
 }

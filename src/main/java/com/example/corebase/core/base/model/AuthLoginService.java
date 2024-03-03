@@ -1,6 +1,6 @@
 package com.example.corebase.core.base.model;
 
-import com.example.corebase.entity.Users;
+import com.example.corebase.entity.UsersEntity;
 
 public interface AuthLoginService {
 
@@ -14,6 +14,6 @@ public interface AuthLoginService {
 
     String getPicture();
 
-    Users getAuth();
+    UsersEntity getAuth();
 
 }

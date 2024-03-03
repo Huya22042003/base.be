@@ -18,15 +18,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class ObjectPremium extends PrimaryBase {
+public class RoleObjectEntity extends PrimaryBase {
 
     @ManyToOne
     @JoinColumn(name = "object_id")
-    private Objects objectId;
+    private ObjectsEntity objectsEntityId;
 
     @ManyToOne
-    @JoinColumn(name = "premium_id")
-    private PremiumTypes premiumTypesId;
+    @JoinColumn(name = "role_id")
+    private RolesEntity rolesEntityId;
 
     @Column(name = "is_active")
     private ActiveStatus isActive;

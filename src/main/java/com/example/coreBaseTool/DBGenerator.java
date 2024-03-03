@@ -1,10 +1,10 @@
 package com.example.coreBaseTool;// package com.articlesprojectTool;
 
-import com.example.corebase.entity.Objects;
-import com.example.corebase.entity.Roles;
-import com.example.corebase.entity.UserObject;
-import com.example.corebase.entity.UserRole;
-import com.example.corebase.entity.Users;
+import com.example.corebase.entity.ObjectsEntity;
+import com.example.corebase.entity.RolesEntity;
+import com.example.corebase.entity.UserObjectEntity;
+import com.example.corebase.entity.UserRoleEntity;
+import com.example.corebase.entity.UsersEntity;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
 import com.example.corebase.infrastructure.constant.TypeObjects;
 import com.example.corebase.repository.ObjectPremiumRepository;
@@ -59,73 +59,76 @@ public class DBGenerator implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Roles roles = new Roles();
-        roles.setRoleCode("ADMIN");
-        roles.setRoleName("admin");
-        roles.setIsActive(ActiveStatus.ACTIVE);
-        roles.setId(rolesRepository.save(roles).getId());
+        RolesEntity rolesEntity = new RolesEntity();
+        rolesEntity.setRoleCode("ADMIN");
+        rolesEntity.setRoleName("admin");
+        rolesEntity.setIsActive(ActiveStatus.ACTIVE);
+        rolesEntity.setId(rolesRepository.save(rolesEntity).getId());
 
-        Objects objects = new Objects();
-        objects.setIsActive(ActiveStatus.ACTIVE);
-        objects.setCode("QLHT");
-        objects.setName("Quản lý hệ thống");
-        objects.setOrderBy(0L);
-        objects.setIcons("circle-exclamation");
-        objects.setType(TypeObjects.NAV_BAR);
-        objects.setId(objectsRepository.save(objects).getId());
+        ObjectsEntity objectsEntity = new ObjectsEntity();
+        objectsEntity.setIsActive(ActiveStatus.ACTIVE);
+        objectsEntity.setCode("QLHT");
+        objectsEntity.setName("Quản lý hệ thống");
+        objectsEntity.setOrderBy(0L);
+        objectsEntity.setIcons("circle-exclamation");
+        objectsEntity.setType(TypeObjects.NAV_BAR);
+        objectsEntity.setKey("base.menu.system.management");
+        objectsEntity.setId(objectsRepository.save(objectsEntity).getId());
 
-        Objects objects1 = new Objects();
-        objects1.setIsActive(ActiveStatus.ACTIVE);
-        objects1.setCode("QLHT_ROLE");
-        objects1.setName("Quản lý phân quyền");
-        objects1.setOrderBy(0L);
-        objects1.setIcons("circle-exclamation");
-        objects1.setType(TypeObjects.NAV_BAR);
-        objects1.setParentId(objects.getId());
-        objects1.setId(objectsRepository.save(objects1).getId());
+        ObjectsEntity objectsEntity1 = new ObjectsEntity();
+        objectsEntity1.setIsActive(ActiveStatus.ACTIVE);
+        objectsEntity1.setCode("QLHT_ROLE");
+        objectsEntity1.setName("Quản lý phân quyền");
+        objectsEntity1.setOrderBy(0L);
+        objectsEntity1.setIcons("circle-exclamation");
+        objectsEntity1.setType(TypeObjects.NAV_BAR);
+        objectsEntity1.setKey("base.menu.system.author");
+        objectsEntity1.setParentId(objectsEntity.getId());
+        objectsEntity1.setId(objectsRepository.save(objectsEntity1).getId());
 
-        Objects objects2 = new Objects();
-        objects2.setIsActive(ActiveStatus.ACTIVE);
-        objects2.setCode("QLHT_USER");
-        objects2.setName("Quản lý người dùng");
-        objects2.setOrderBy(0L);
-        objects2.setIcons("circle-exclamation");
-        objects2.setType(TypeObjects.NAV_BAR);
-        objects2.setParentId(objects.getId());
-        objects2.setId(objectsRepository.save(objects2).getId());
+        ObjectsEntity objectsEntity2 = new ObjectsEntity();
+        objectsEntity2.setIsActive(ActiveStatus.ACTIVE);
+        objectsEntity2.setCode("QLHT_USER");
+        objectsEntity2.setName("Quản lý người dùng");
+        objectsEntity2.setOrderBy(0L);
+        objectsEntity2.setIcons("circle-exclamation");
+        objectsEntity2.setKey("base.menu.system.user");
+        objectsEntity2.setType(TypeObjects.NAV_BAR);
+        objectsEntity2.setParentId(objectsEntity.getId());
+        objectsEntity2.setId(objectsRepository.save(objectsEntity2).getId());
 
 
-        Users users = new Users();
-        users.setIsActive(ActiveStatus.ACTIVE);
-        users.setUserName("admin");
-        users.setPassword("admin");
-        users.setFullName("admin");
-        users.setEmail("admin");
-        users.setId(usersRepository.save(users).getId());
+        UsersEntity usersEntity = new UsersEntity();
+        usersEntity.setIsActive(ActiveStatus.ACTIVE);
+        usersEntity.setUserName("admin");
+        usersEntity.setPassword("admin");
+        usersEntity.setFullName("admin");
+        usersEntity.setEmail("admin");
+        usersEntity.setId(usersRepository.save(usersEntity).getId());
 
-        UserObject userObject = new UserObject();
-        userObject.setObjectId(objects);
-        userObject.setUserid(users);
-        userObject.setIsActive(ActiveStatus.ACTIVE);
-        userObjectRepository.save(userObject);
+        UserObjectEntity userObjectEntity = new UserObjectEntity();
+        userObjectEntity.setObjectId(objectsEntity);
+        userObjectEntity.setUserid(usersEntity);
+        userObjectEntity.setIsActive(ActiveStatus.ACTIVE);
+        userObjectRepository.save(userObjectEntity);
 
-        UserObject userObject1 = new UserObject();
-        userObject1.setObjectId(objects1);
-        userObject1.setUserid(users);
-        userObject1.setIsActive(ActiveStatus.ACTIVE);
-        userObjectRepository.save(userObject1);
+        UserObjectEntity userObjectEntity1 = new UserObjectEntity();
+        userObjectEntity1.setObjectId(objectsEntity1);
+        userObjectEntity1.setUserid(usersEntity);
+        userObjectEntity1.setIsActive(ActiveStatus.ACTIVE);
+        userObjectRepository.save(userObjectEntity1);
 
-        UserObject userObject2 = new UserObject();
-        userObject2.setObjectId(objects2);
-        userObject2.setUserid(users);
-        userObject2.setIsActive(ActiveStatus.ACTIVE);
-        userObjectRepository.save(userObject2);
+        UserObjectEntity userObjectEntity2 = new UserObjectEntity();
+        userObjectEntity2.setObjectId(objectsEntity2);
+        userObjectEntity2.setUserid(usersEntity);
+        userObjectEntity2.setIsActive(ActiveStatus.ACTIVE);
+        userObjectRepository.save(userObjectEntity2);
 
-        UserRole userRole = new UserRole();
-        userRole.setUserId(users);
-        userRole.setRolesId(roles);
-        userRole.setIsActive(ActiveStatus.ACTIVE);
-        userRoleRepository.save(userRole);
+        UserRoleEntity userRoleEntity = new UserRoleEntity();
+        userRoleEntity.setUserId(usersEntity);
+        userRoleEntity.setRolesEntityId(rolesEntity);
+        userRoleEntity.setIsActive(ActiveStatus.ACTIVE);
+        userRoleRepository.save(userRoleEntity);
 
     }
 

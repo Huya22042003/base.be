@@ -1,10 +1,10 @@
 package com.example.corebase.repository;
 
-import com.example.corebase.entity.PremiumTypes;
+import com.example.corebase.entity.PremiumTypesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PremiumTypesRepository extends JpaRepository<PremiumTypes, Long> {
+public interface PremiumTypesRepository extends JpaRepository<PremiumTypesEntity, Long> {
     static final String BASE_NAME = "premium_type_repository";
 }

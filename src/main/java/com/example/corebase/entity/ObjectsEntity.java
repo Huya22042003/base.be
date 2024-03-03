@@ -2,25 +2,22 @@ package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.PrimaryBase;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
+import com.example.corebase.infrastructure.constant.TypeObjects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
-public class PremiumTypes extends PrimaryBase {
+public class ObjectsEntity extends PrimaryBase {
 
     @Column(name = "name")
     private String name;
@@ -28,20 +25,24 @@ public class PremiumTypes extends PrimaryBase {
     @Column(name = "code")
     private String code;
 
-    @Column(name = "money")
-    private BigDecimal money;
+    @Column(name = "order_by")
+    private Long orderBy;
+
+    @Column(name = "icons")
+    private String icons;
+
+    @Column(name = "url")
+    private String url;
 
     @Column(name = "is_active")
     private ActiveStatus isActive;
 
-    @Column(name = "note")
-    private String note;
+    @Column(name = "type")
+    private TypeObjects type;
 
-    @Column(name = "level")
-    private Long level;
+    @Column(name = "key")
+    private String key;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Roles rolesId;
-
+    @Column(name = "parent_id")
+    private Long parentId;
 }

@@ -4,7 +4,7 @@ import com.example.corebase.entity.base.AuditEntity;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 
-import java.util.Calendar;
+import java.util.Date;
 
 public class AuditEntityListener {
 
@@ -19,7 +19,7 @@ public class AuditEntityListener {
         entity.setLastModifiedDate(getCurrentTime());
     }
 
-    private long getCurrentTime() {
-        return Calendar.getInstance().getTimeInMillis();
+    private Date getCurrentTime() {
+        return new Date();
     }
 }

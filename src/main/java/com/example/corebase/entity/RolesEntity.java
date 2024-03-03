@@ -4,8 +4,6 @@ import com.example.corebase.entity.base.PrimaryBase;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,15 +16,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
-public class UserPremium extends PrimaryBase {
+public class RolesEntity extends PrimaryBase {
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users usersId;
+    @Column(name = "role_name")
+    private String roleName;
 
-    @ManyToOne
-    @JoinColumn(name = "premium_id")
-    private PremiumTypes premiumTypes;
+    @Column(name = "role_code")
+    private String roleCode;
 
     @Column(name = "is_active")
     private ActiveStatus isActive;

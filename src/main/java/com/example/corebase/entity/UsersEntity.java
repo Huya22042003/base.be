@@ -4,31 +4,35 @@ import com.example.corebase.entity.base.PrimaryBase;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table
 @Entity
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserRole extends PrimaryBase {
+@Getter
+@Setter
+@Builder
+public class UsersEntity extends PrimaryBase {
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private Users userId;
+    @Column(name = "username")
+    private String userName;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Roles rolesId;
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "full_name")
+    private String fullName;
 
     @Column(name = "is_active")
     private ActiveStatus isActive;
+
 }

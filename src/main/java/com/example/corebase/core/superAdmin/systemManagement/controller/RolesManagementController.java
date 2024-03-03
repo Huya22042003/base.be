@@ -3,7 +3,7 @@ package com.example.corebase.core.superAdmin.systemManagement.controller;
 import com.example.corebase.core.base.model.ResponseObject;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.RolesManagementFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.service.RoleManagementService;
-import com.example.corebase.entity.Roles;
+import com.example.corebase.entity.RolesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,13 +28,13 @@ public class RolesManagementController {
     }
 
     @PostMapping
-    public ResponseObject createRoles(Roles roles) {
-        return new ResponseObject(service.addRoles(roles));
+    public ResponseObject createRoles(RolesEntity rolesEntity) {
+        return new ResponseObject(service.addRoles(rolesEntity));
     }
 
     @PutMapping
-    public ResponseObject updateRoles(Roles roles) {
-        return new ResponseObject(service.updateRoles(roles));
+    public ResponseObject updateRoles(RolesEntity rolesEntity) {
+        return new ResponseObject(service.updateRoles(rolesEntity));
     }
 
     @DeleteMapping("/{id}")
