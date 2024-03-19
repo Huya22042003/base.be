@@ -24,12 +24,6 @@ public class CodeMngController {
         this.codeMngService = codeMngService;
     }
 
-    /**
-     * 코드 검색
-     * 
-     * @param upCdId
-     * @return
-     */
     @GetMapping("/search")
     public List<CodeMngDTO> getCodeByUpId(@RequestParam String upCdId) {
         try {
@@ -39,13 +33,7 @@ public class CodeMngController {
             throw e;
         }
     }
-    
-    /**
-     * 코드 검색
-     * 
-     * @param upCdId
-     * @return
-     */
+
     @GetMapping("/listCode/{upcIdList}")
     public List<CodeMngDTO> getCodeByUpIdList(@PathVariable(name="upcIdList") List<String> upcIdList) {
         try {

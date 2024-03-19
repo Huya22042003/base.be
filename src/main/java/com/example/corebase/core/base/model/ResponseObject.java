@@ -12,10 +12,10 @@ public class ResponseObject {
     private String message;
 
     public <T> ResponseObject(T obj) {
-        processReponseObject(obj);
+        processResponseObject(obj);
     }
 
-    public void processReponseObject(Object obj) {
+    public void processResponseObject(Object obj) {
         if (obj != null) {
             this.isSuccess = true;
             this.data = obj;

@@ -20,9 +20,9 @@ public interface MenuLoginRepository extends ObjectsRepository {
             o.url,
             o.parent_id ,
             o.order_by
-        from objectsEntity o
+        from objects_entity o
         join user_object uo on uo.object_id = o.id
-        join usersEntity u on u.id = uo.user_id
+        join users_entity u on u.id = uo.user_id
         where type = 0
         and u.full_name = :fullName
         and o.is_active = 1
