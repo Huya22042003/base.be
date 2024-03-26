@@ -1,21 +1,9 @@
-package com.example.coreBaseTool;// package com.articlesprojectTool;
+package com.example.coreBaseTool;
 
-import com.example.corebase.entity.ObjectsEntity;
-import com.example.corebase.entity.RolesEntity;
-import com.example.corebase.entity.UserObjectEntity;
-import com.example.corebase.entity.UserRoleEntity;
-import com.example.corebase.entity.UsersEntity;
+import com.example.corebase.entity.*;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
 import com.example.corebase.infrastructure.constant.TypeObjects;
-import com.example.corebase.repository.ObjectPremiumRepository;
-import com.example.corebase.repository.ObjectsRepository;
-import com.example.corebase.repository.PremiumTypesRepository;
-import com.example.corebase.repository.RoleObjectRepository;
-import com.example.corebase.repository.RolesRepository;
-import com.example.corebase.repository.UserObjectRepository;
-import com.example.corebase.repository.UserPremiumRepository;
-import com.example.corebase.repository.UserRoleRepository;
-import com.example.corebase.repository.UsersRepository;
+import com.example.corebase.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -57,8 +45,27 @@ public class DBGenerator implements CommandLineRunner {
     @Autowired
     private UserRoleRepository userRoleRepository;
 
+    @Autowired
+    private CodeMngRepository codeMngRepository;
+
     @Override
     public void run(String... args) throws Exception {
+        CodeMngEntity codeMngEntity = new CodeMngEntity();
+        codeMngEntity.setIsActive(ActiveStatus.ACTIVE);
+        codeMngEntity.setCdCategory("OBJECT_TYPE");
+        codeMngEntity.setCdId("OBJECT_TYPE_1");
+        codeMngEntity.setCdName("Menu");
+        codeMngEntity.setCdKey("base.common.code.object.menu");
+        codeMngRepository.save(codeMngEntity);
+
+        CodeMngEntity codeMngEntity1 = new CodeMngEntity();
+        codeMngEntity1.setIsActive(ActiveStatus.ACTIVE);
+        codeMngEntity1.setCdCategory("OBJECT_TYPE");
+        codeMngEntity1.setCdId("OBJECT_TYPE_2");
+        codeMngEntity1.setCdName("Tool");
+        codeMngEntity1.setCdKey("base.common.code.object.tool");
+        codeMngRepository.save(codeMngEntity1);
+
         RolesEntity rolesEntity = new RolesEntity();
         rolesEntity.setRoleCode("ADMIN");
         rolesEntity.setRoleName("admin");
@@ -71,8 +78,9 @@ public class DBGenerator implements CommandLineRunner {
         objectsEntity.setName("Quản lý hệ thống");
         objectsEntity.setOrderBy(0L);
         objectsEntity.setIcons("circle-exclamation");
-        objectsEntity.setType(TypeObjects.NAV_BAR);
+        objectsEntity.setType(codeMngEntity.getCdId());
         objectsEntity.setKey("base.menu.system.management");
+        objectsEntity.setIsActive(ActiveStatus.ACTIVE);
         objectsEntity.setId(objectsRepository.save(objectsEntity).getId());
 
         ObjectsEntity objectsEntity1 = new ObjectsEntity();
@@ -81,9 +89,11 @@ public class DBGenerator implements CommandLineRunner {
         objectsEntity1.setName("Quản lý phân quyền");
         objectsEntity1.setOrderBy(0L);
         objectsEntity1.setIcons("circle-exclamation");
-        objectsEntity1.setType(TypeObjects.NAV_BAR);
+        objectsEntity1.setType(codeMngEntity.getCdId());
         objectsEntity1.setKey("base.menu.system.author");
         objectsEntity1.setParentId(objectsEntity.getId());
+        objectsEntity1.setIsActive(ActiveStatus.ACTIVE);
+        objectsEntity.setType(codeMngEntity.getCdId());
         objectsEntity1.setId(objectsRepository.save(objectsEntity1).getId());
 
         ObjectsEntity objectsEntity2 = new ObjectsEntity();
@@ -93,8 +103,9 @@ public class DBGenerator implements CommandLineRunner {
         objectsEntity2.setOrderBy(0L);
         objectsEntity2.setIcons("circle-exclamation");
         objectsEntity2.setKey("base.menu.system.user");
-        objectsEntity2.setType(TypeObjects.NAV_BAR);
+        objectsEntity2.setIsActive(ActiveStatus.ACTIVE);
         objectsEntity2.setParentId(objectsEntity.getId());
+        objectsEntity1.setType(codeMngEntity.getCdId());
         objectsEntity2.setId(objectsRepository.save(objectsEntity2).getId());
 
 

@@ -5,6 +5,7 @@ import com.example.corebase.infrastructure.constant.ActiveStatus;
 import com.example.corebase.infrastructure.constant.TypeObjects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "objects_entity")
 public class ObjectsEntity extends PrimaryBase {
 
     @Column(name = "name")
@@ -38,7 +40,7 @@ public class ObjectsEntity extends PrimaryBase {
     private ActiveStatus isActive;
 
     @Column(name = "type")
-    private TypeObjects type;
+    private String type;
 
     @Column(name = "key")
     private String key;

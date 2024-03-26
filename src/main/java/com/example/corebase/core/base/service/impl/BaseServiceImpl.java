@@ -26,7 +26,8 @@ public class BaseServiceImpl implements BaseService {
 
     @Override
     public List<ObjectDto> getListObjectByUser() {
-        List<ObjectsEntity> list = objectsRepository.getObjectsByIdUsers(authLoginService.getAuth().getId());
+//        List<ObjectsEntity> list = objectsRepository.getObjectsByIdUsers(authLoginService.getAuth().getId());
+        List<ObjectsEntity> list = objectsRepository.getObjectsByIdUsers(1L);
         List<ObjectDto> response = list.stream().map(el ->
                 new ObjectDto(languageCommon.getMessageProperties(el.getKey()), el.getIcons(), el.getUrl()))
         .collect(Collectors.toList());

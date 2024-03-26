@@ -23,7 +23,7 @@ public interface MenuLoginRepository extends ObjectsRepository {
         from objects_entity o
         join user_object uo on uo.object_id = o.id
         join users_entity u on u.id = uo.user_id
-        where type = 0
+        where o.type = 'OBJECT_TYPE_1'
         and u.full_name = :fullName
         and o.is_active = 1
         and uo.is_active = 1

@@ -19,7 +19,7 @@ public class ObjectManagementController {
     @Qualifier("objectManagementServiceImpl")
     private ObjectManagementService service;
 
-    @GetMapping("/")
+    @GetMapping
     public ResponseObject getAllObjectManagement(ObjectManagementFilterRequest request) {
         return new ResponseObject(service.getAllObjects(request));
     }
