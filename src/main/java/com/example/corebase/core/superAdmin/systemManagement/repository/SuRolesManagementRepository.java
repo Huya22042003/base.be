@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 @Repository("rolesManagementRepository")
-public interface RolesManagementRepository extends RolesRepository {
+public interface SuRolesManagementRepository extends RolesRepository {
     Page<RolesEntity> findByRoleNameContainingAndRoleCodeContaining(String name, String code, Pageable pageable);
 }

@@ -81,6 +81,8 @@ public class DBGenerator implements CommandLineRunner {
         objectsEntity.setType(codeMngEntity.getCdId());
         objectsEntity.setKey("base.menu.system.management");
         objectsEntity.setIsActive(ActiveStatus.ACTIVE);
+        objectsEntity.setIsStart(ActiveStatus.ACTIVE);
+        objectsEntity.setUrl("/supper-admin/system-management/objects");
         objectsEntity.setId(objectsRepository.save(objectsEntity).getId());
 
         ObjectsEntity objectsEntity1 = new ObjectsEntity();
@@ -93,19 +95,23 @@ public class DBGenerator implements CommandLineRunner {
         objectsEntity1.setKey("base.menu.system.author");
         objectsEntity1.setParentId(objectsEntity.getId());
         objectsEntity1.setIsActive(ActiveStatus.ACTIVE);
-        objectsEntity.setType(codeMngEntity.getCdId());
+        objectsEntity1.setType(codeMngEntity.getCdId());
+        objectsEntity1.setIsStart(ActiveStatus.ACTIVE);
+        objectsEntity1.setUrl("/supper-admin/system-management/roles");
         objectsEntity1.setId(objectsRepository.save(objectsEntity1).getId());
 
         ObjectsEntity objectsEntity2 = new ObjectsEntity();
         objectsEntity2.setIsActive(ActiveStatus.ACTIVE);
         objectsEntity2.setCode("QLHT_USER");
         objectsEntity2.setName("Quản lý người dùng");
-        objectsEntity2.setOrderBy(0L);
+        objectsEntity2.setOrderBy(1L);
         objectsEntity2.setIcons("circle-exclamation");
         objectsEntity2.setKey("base.menu.system.user");
         objectsEntity2.setIsActive(ActiveStatus.ACTIVE);
         objectsEntity2.setParentId(objectsEntity.getId());
-        objectsEntity1.setType(codeMngEntity.getCdId());
+        objectsEntity2.setType(codeMngEntity.getCdId());
+        objectsEntity2.setIsStart(ActiveStatus.ACTIVE);
+        objectsEntity2.setUrl("/supper-admin/system-management/users");
         objectsEntity2.setId(objectsRepository.save(objectsEntity2).getId());
 
 

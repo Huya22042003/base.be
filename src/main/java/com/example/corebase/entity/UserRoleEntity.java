@@ -12,12 +12,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "users_roles")
 public class UserRoleEntity extends PrimaryBase {
 
     @ManyToOne

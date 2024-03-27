@@ -39,6 +39,9 @@ public class ObjectsEntity extends PrimaryBase {
     @Column(name = "is_active")
     private ActiveStatus isActive;
 
+    @Column(name = "is_start")
+    private ActiveStatus isStart;
+
     @Column(name = "type")
     private String type;
 

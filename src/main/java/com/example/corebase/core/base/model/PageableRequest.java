@@ -19,9 +19,9 @@ public abstract class PageableRequest {
     public Pageable getPageable() {
         Sort sort = sort();
         if (sort == null) {
-            return PageRequest.of(page, 1);
+            return PageRequest.of(page, size);
         }
-        return PageRequest.of(page, 1, sort);
+        return PageRequest.of(page, size, sort);
     }
 
     public Sort sort() {

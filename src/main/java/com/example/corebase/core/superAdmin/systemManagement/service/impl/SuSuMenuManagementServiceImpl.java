@@ -2,8 +2,8 @@ package com.example.corebase.core.superAdmin.systemManagement.service.impl;
 
 import com.example.corebase.core.superAdmin.systemManagement.model.response.MenuLoginResponse;
 import com.example.corebase.core.superAdmin.systemManagement.model.response.MenuLoginResponseImpl;
-import com.example.corebase.core.superAdmin.systemManagement.repository.MenuLoginRepository;
-import com.example.corebase.core.superAdmin.systemManagement.service.MenuManagementService;
+import com.example.corebase.core.superAdmin.systemManagement.repository.SuMenuLoginRepository;
+import com.example.corebase.core.superAdmin.systemManagement.service.SuMenuManagementService;
 import com.example.corebase.util.LanguageCommon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("objectLoginService")
-public class MenuManagementServiceImpl implements MenuManagementService {
+public class SuSuMenuManagementServiceImpl implements SuMenuManagementService {
 
     @Autowired
     @Qualifier("objectLoginRepository")
-    private MenuLoginRepository repository;
+    private SuMenuLoginRepository repository;
 
     @Autowired
     private LanguageCommon languageCommon;

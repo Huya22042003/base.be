@@ -4,6 +4,7 @@ import com.example.corebase.entity.base.PrimaryBase;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,6 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+@Table(name = "roles")
 public class RolesEntity extends PrimaryBase {
 
     @Column(name = "role_name")

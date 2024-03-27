@@ -1,9 +1,9 @@
 package com.example.corebase.core.superAdmin.systemManagement.service.impl;
 
 import com.example.corebase.core.base.model.PageableObject;
-import com.example.corebase.core.superAdmin.systemManagement.model.request.RolesManagementFilterRequest;
-import com.example.corebase.core.superAdmin.systemManagement.repository.RolesManagementRepository;
-import com.example.corebase.core.superAdmin.systemManagement.service.RoleManagementService;
+import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementFilterRequest;
+import com.example.corebase.core.superAdmin.systemManagement.repository.SuRolesManagementRepository;
+import com.example.corebase.core.superAdmin.systemManagement.service.SuRoleManagementService;
 import com.example.corebase.entity.RolesEntity;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +11,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service("roleManagementService")
-public class RoleManagementServiceImpl implements RoleManagementService {
+public class SuRoleManagementServiceImpl implements SuRoleManagementService {
 
     @Autowired
     @Qualifier("rolesManagementRepository")
-    private RolesManagementRepository repository;
+    private SuRolesManagementRepository repository;
 
     @Override
-    public PageableObject<RolesEntity> getListRoles(RolesManagementFilterRequest request) {
+    public PageableObject<RolesEntity> getListRoles(SuRolesManagementFilterRequest request) {
         return new PageableObject<>(
                 repository.findByRoleNameContainingAndRoleCodeContaining(request.getName(),
                         request.getCode(), request.getPageable()));

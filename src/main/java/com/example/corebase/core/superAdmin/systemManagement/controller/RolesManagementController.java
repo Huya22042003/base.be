@@ -1,8 +1,8 @@
 package com.example.corebase.core.superAdmin.systemManagement.controller;
 
 import com.example.corebase.core.base.model.ResponseObject;
-import com.example.corebase.core.superAdmin.systemManagement.model.request.RolesManagementFilterRequest;
-import com.example.corebase.core.superAdmin.systemManagement.service.RoleManagementService;
+import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementFilterRequest;
+import com.example.corebase.core.superAdmin.systemManagement.service.SuRoleManagementService;
 import com.example.corebase.entity.RolesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,10 +20,10 @@ public class RolesManagementController {
 
     @Autowired
     @Qualifier("roleManagementService")
-    private RoleManagementService service;
+    private SuRoleManagementService service;
 
     @GetMapping
-    public ResponseObject getPageRoles(RolesManagementFilterRequest request) {
+    public ResponseObject getPageRoles(SuRolesManagementFilterRequest request) {
         return new ResponseObject(service.getListRoles(request));
     }
 

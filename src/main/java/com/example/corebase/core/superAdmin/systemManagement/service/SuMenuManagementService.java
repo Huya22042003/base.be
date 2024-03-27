@@ -4,6 +4,6 @@ import com.example.corebase.core.superAdmin.systemManagement.model.response.Menu
 
 import java.util.List;
 
-public interface MenuManagementService {
+public interface SuMenuManagementService {
     List<MenuLoginResponseImpl> getMenuLogin();
 }

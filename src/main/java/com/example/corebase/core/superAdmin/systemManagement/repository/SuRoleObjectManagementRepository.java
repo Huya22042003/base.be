@@ -4,5 +4,5 @@ import com.example.corebase.repository.RoleObjectRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository("roleObjectManagementRepository")
-public interface RoleObjectManagementRepository extends RoleObjectRepository {
+public interface SuRoleObjectManagementRepository extends RoleObjectRepository {
 }
