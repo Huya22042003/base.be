@@ -6,10 +6,7 @@ import com.example.corebase.core.superAdmin.systemManagement.service.SuObjectMan
 import com.example.corebase.entity.ObjectsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/super-admin/object-management")
@@ -19,8 +16,8 @@ public class ObjectManagementController {
     @Qualifier("objectManagementServiceImpl")
     private SuObjectManagementService service;
 
-    @GetMapping
-    public ResponseObject getAllObjectManagement(SuObjectManagementFilterRequest request) {
+    @PostMapping("/list")
+    public ResponseObject getAllObjectManagement(@RequestBody SuObjectManagementFilterRequest request) {
         return new ResponseObject(service.getAllObjects(request));
     }
 

@@ -24,9 +24,9 @@ public interface SuObjectManagementRepository extends ObjectsRepository {
         	oe.is_start
         from objects_entity oe
         where oe.is_active = 1
-        and (:#{#req.code} is null or :#{#req.code} = '' or oe.code like :#{#req.code})
-        and (:#{#req.name} is null or :#{#req.name} = '' or oe.name like :#{#req.name})
-        and (:#{#req.typeObjects} is null or :#{#req.typeObjects} = '' or oe.type like :#{#req.typeObjects})
+        and (:#{#req.code} is null or :#{#req.code} = '' or oe.code like %:#{#req.code}%)
+        and (:#{#req.name} is null or :#{#req.name} = '' or oe.name like %:#{#req.name}%)
+        and (:#{#req.typeObjects} is null or :#{#req.typeObjects} = '' or oe.type like %:#{#req.typeObjects}%)
                                      
     """, nativeQuery = true)
     Page<SuObjectsManagementResponse> getAllObjectsManagement(@Param("req") SuObjectManagementFilterRequest req, Pageable pageable);
