@@ -2,8 +2,6 @@ package com.example.corebase.core.superAdmin.systemManagement.model.response;
 
 public interface SuObjectsManagementResponse {
 
-    Long getRowNumber();
-
     Long getId();
 
     String getCode();

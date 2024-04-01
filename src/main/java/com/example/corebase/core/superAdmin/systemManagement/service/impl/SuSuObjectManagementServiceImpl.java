@@ -20,7 +20,7 @@ public class SuSuObjectManagementServiceImpl implements SuObjectManagementServic
 
     @Override
     public PageableObject<SuObjectsManagementResponse> getAllObjects(SuObjectManagementFilterRequest request) {
-        return new PageableObject<>(repository.getAllObjectsManagement(request, PageRequest.of(request.getPage(), request.getSize())));
+        return new PageableObject<>(repository.getAllObjectsManagement(request, request.getPageable()));
     }
 
     @Override

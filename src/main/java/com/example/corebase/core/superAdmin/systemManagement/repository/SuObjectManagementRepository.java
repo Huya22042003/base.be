@@ -13,9 +13,6 @@ import org.springframework.stereotype.Repository;
 public interface SuObjectManagementRepository extends ObjectsRepository {
 
     @Query(value = """
-        select submenu.*,
-             ROW_NUMBER() OVER (ORDER BY '' || :#{#req.sortField} || '' || :#{#req.sortType}) AS rowNumber
-          from (
               select
                 oe.id as id,
                 oe.code as code,
@@ -28,7 +25,6 @@ public interface SuObjectManagementRepository extends ObjectsRepository {
                 and (:#{#req.code} is null or :#{#req.code} = '' or oe.code like %:#{#req.code}%)
                 and (:#{#req.name} is null or :#{#req.name} = '' or oe.name like %:#{#req.name}%)
                 and (:#{#req.typeObjects} is null or :#{#req.typeObjects} = '' or oe.type like %:#{#req.typeObjects}%)
-          ) as submenu                       
     """, nativeQuery = true)
     Page<SuObjectsManagementResponse> getAllObjectsManagement(@Param("req") SuObjectManagementFilterRequest req, Pageable pageable);
 }
