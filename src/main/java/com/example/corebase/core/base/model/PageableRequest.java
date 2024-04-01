@@ -13,22 +13,6 @@ public abstract class PageableRequest {
 
     private int page = PaginationConstant.DEFAULT_PAGE;
     private int size = PaginationConstant.DEFAULT_SIZE;
-    private String orderByColumn;
-    private boolean ascendingOrder = true;
-
-    public Pageable getPageable() {
-        Sort sort = sort();
-        if (sort == null) {
-            return PageRequest.of(page, size);
-        }
-        return PageRequest.of(page, size, sort);
-    }
-
-    public Sort sort() {
-        if (orderByColumn != null && !orderByColumn.isEmpty()) {
-            return ascendingOrder ? Sort.by(Sort.Direction.ASC, orderByColumn) : Sort.by(Sort.Direction.DESC, orderByColumn);
-        } else {
-            return null;
-        }
-    }
+    private String sortField = "id";
+    private String sortType = "";
 }

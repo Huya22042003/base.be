@@ -21,7 +21,7 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
     public PageableObject<RolesEntity> getListRoles(SuRolesManagementFilterRequest request) {
         return new PageableObject<>(
                 repository.findByRoleNameContainingAndRoleCodeContaining(request.getName(),
-                        request.getCode(), request.getPageable()));
+                        request.getCode(), null));
     }
 
     @Override

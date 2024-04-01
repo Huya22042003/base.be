@@ -8,6 +8,7 @@ import com.example.corebase.core.superAdmin.systemManagement.service.SuObjectMan
 import com.example.corebase.entity.ObjectsEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service("objectManagementServiceImpl")
@@ -19,7 +20,7 @@ public class SuSuObjectManagementServiceImpl implements SuObjectManagementServic
 
     @Override
     public PageableObject<SuObjectsManagementResponse> getAllObjects(SuObjectManagementFilterRequest request) {
-        return new PageableObject<>(repository.getAllObjectsManagement(request, request.getPageable()));
+        return new PageableObject<>(repository.getAllObjectsManagement(request, PageRequest.of(request.getPage(), request.getSize())));
     }
 
     @Override

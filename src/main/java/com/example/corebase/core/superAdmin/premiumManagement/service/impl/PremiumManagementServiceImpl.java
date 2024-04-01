@@ -19,7 +19,7 @@ public class PremiumManagementServiceImpl implements PremiumManagementService {
 
     @Override
     public PageableObject<PremiumTypesEntity> getAllPremiumType(PremiumTypeFilterRequest request) {
-        return new PageableObject<>(repository.findAllByCodeContainingAndNameContaining(request.getCode(), request.getName(), request.getPageable()));
+        return new PageableObject<>(repository.findAllByCodeContainingAndNameContaining(request.getCode(), request.getName(), null));
     }
 
     @Override
