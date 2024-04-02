@@ -11,7 +11,7 @@ import org.springframework.data.domain.Sort;
 @Setter
 public abstract class PageableRequest {
 
-    private int page = PaginationConstant.DEFAULT_PAGE;
+    private int current = PaginationConstant.DEFAULT_PAGE;
     private int size = PaginationConstant.DEFAULT_SIZE;
     private String sortField = "id";
     private String sortType = "";
@@ -19,9 +19,9 @@ public abstract class PageableRequest {
     public Pageable getPageable() {
         Sort sort = sort();
         if (sort == null) {
-            return PageRequest.of(page, size);
+            return PageRequest.of(current, size);
         }
-        return PageRequest.of(page, size, sort);
+        return PageRequest.of(current, size, sort);
     }
 
     public Sort sort() {

@@ -22,7 +22,7 @@ public class ObjectManagementController {
     }
 
     @PostMapping
-    public ResponseObject createOrUpdateObjectManagement(ObjectsEntity objectsEntity) {
+    public ResponseObject createOrUpdateObjectManagement(@RequestBody ObjectsEntity objectsEntity) {
         return new ResponseObject(service.createOrUpdateObjects(objectsEntity));
     }
 }
