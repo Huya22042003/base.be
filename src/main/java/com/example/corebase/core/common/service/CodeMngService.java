@@ -1,11 +1,13 @@
 package com.example.corebase.core.common.service;
 
 import com.example.corebase.core.common.service.dto.CodeMngDTO;
+import com.example.corebase.entity.CodeMngEntity;
 import com.example.corebase.repository.CodeMngRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -32,9 +34,9 @@ public class CodeMngService {
     }
 
     public List<CodeMngDTO> getListCode(List<String> listUpCdId) {
-//        List<CodeMngEntity> listResult = codeMngRepository.findByUpCdIdInAndUseYn(listUpCdId, "Y");
-//        List<CodeMngDTO> listCode = listResult.stream().map(item -> modelMapper.map(item, CodeMngDTO.class))
-//                .collect(Collectors.toList());
+        List<CodeMngEntity> listResult = codeMngRepository.findByUpCdIdInAndUseYn(listUpCdId, "Y");
+        List<CodeMngDTO> listCode = listResult.stream().map(item -> modelMapper.map(item, CodeMngDTO.class))
+                .collect(Collectors.toList());
 
         return null;
     }

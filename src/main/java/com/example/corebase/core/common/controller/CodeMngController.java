@@ -1,5 +1,6 @@
 package com.example.corebase.core.common.controller;
 
+import com.example.corebase.core.base.model.ResponseObject;
 import com.example.corebase.core.common.service.CodeMngService;
 import com.example.corebase.core.common.service.dto.CodeMngDTO;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/code")
+@RequestMapping("/api/code")
 public class CodeMngController {
 
     private final Logger log = LoggerFactory.getLogger(CodeMngController.class);
@@ -25,9 +26,9 @@ public class CodeMngController {
     }
 
     @GetMapping("/search")
-    public List<CodeMngDTO> getCodeByUpId(@RequestParam String upCdId) {
+    public ResponseObject getCodeByUpId(@RequestParam String upCdId) {
         try {
-            return codeMngService.getByUpId(upCdId);
+            return new ResponseObject(codeMngService.getByUpId(upCdId));
         } catch (Exception e) {
             log.error(e.getMessage());
             throw e;
@@ -35,9 +36,9 @@ public class CodeMngController {
     }
 
     @GetMapping("/listCode/{upcIdList}")
-    public List<CodeMngDTO> getCodeByUpIdList(@PathVariable(name="upcIdList") List<String> upcIdList) {
+    public ResponseObject getCodeByUpIdList(@PathVariable(name="upcIdList") List<String> upcIdList) {
         try {
-            return codeMngService.getListCode(upcIdList);
+            return new ResponseObject(codeMngService.getListCode(upcIdList));
         } catch (Exception e) {
             log.error(e.getMessage());
             throw e;
