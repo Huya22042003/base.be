@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service("objectLoginService")
-public class SuSuMenuManagementServiceImpl implements SuMenuManagementService {
+public class SuMenuManagementServiceImpl implements SuMenuManagementService {
 
     @Autowired
     @Qualifier("objectLoginRepository")
