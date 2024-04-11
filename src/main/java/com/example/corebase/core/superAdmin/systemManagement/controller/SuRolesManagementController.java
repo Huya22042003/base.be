@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/super-admin/roles")
-public class RolesManagementController {
+public class SuRolesManagementController {
 
     @Autowired
     @Qualifier("roleManagementService")

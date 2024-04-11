@@ -1,6 +1,6 @@
 package com.example.corebase.core.superAdmin.systemManagement.repository;
 
-import com.example.corebase.core.superAdmin.systemManagement.model.response.MenuLoginResponse;
+import com.example.corebase.core.superAdmin.systemManagement.model.response.SuMenuLoginResponse;
 import com.example.corebase.repository.ObjectsRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,6 +18,7 @@ public interface SuMenuLoginRepository extends ObjectsRepository {
             o.name,
             o.key,
             o.url,
+            o.icons,
             o.parent_id ,
             o.order_by
         from objects_entity o
@@ -29,5 +30,5 @@ public interface SuMenuLoginRepository extends ObjectsRepository {
         and uo.is_active = 1
         and u.id = 1
         """, nativeQuery = true)
-    List<MenuLoginResponse> getAllMenuLoginResponse(@Param("fullName") String fullName);
+    List<SuMenuLoginResponse> getAllMenuLoginResponse(@Param("fullName") String fullName);
 }

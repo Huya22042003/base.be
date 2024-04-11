@@ -1,6 +1,6 @@
 package com.example.corebase.core.superAdmin.systemManagement.controller;
 
-import com.example.corebase.core.superAdmin.systemManagement.model.response.MenuLoginResponseImpl;
+import com.example.corebase.core.superAdmin.systemManagement.model.response.SuMenuLoginResponseImpl;
 import com.example.corebase.core.superAdmin.systemManagement.service.SuMenuManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,14 +12,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/menu")
-public class MenuManagementController {
+public class SuMenuManagementController {
 
     @Autowired
     @Qualifier("objectLoginService")
     private SuMenuManagementService objectLoginService;
 
     @GetMapping("/get-object")
-    public List<MenuLoginResponseImpl> getObjectLogin() {
+    public List<SuMenuLoginResponseImpl> getObjectLogin() {
         return objectLoginService.getMenuLogin();
     }
 }

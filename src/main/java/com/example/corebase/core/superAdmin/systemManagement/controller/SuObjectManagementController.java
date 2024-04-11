@@ -1,6 +1,7 @@
 package com.example.corebase.core.superAdmin.systemManagement.controller;
 
 import com.example.corebase.core.base.model.ResponseObject;
+import com.example.corebase.core.superAdmin.systemManagement.model.request.SuMenuParentModalFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.SuObjectManagementFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.service.SuObjectManagementService;
 import com.example.corebase.entity.ObjectsEntity;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/super-admin/object-management")
-public class ObjectManagementController {
+public class SuObjectManagementController {
 
     @Autowired
     @Qualifier("objectManagementServiceImpl")
@@ -19,6 +20,11 @@ public class ObjectManagementController {
     @PostMapping("/list")
     public ResponseObject getAllObjectManagement(@RequestBody SuObjectManagementFilterRequest request) {
         return new ResponseObject(service.getAllObjects(request));
+    }
+
+    @GetMapping("/menu-parent")
+    public ResponseObject getMenuParentModal(@RequestParam(name = "id") Long id) {
+        return new ResponseObject(service.getMenuParentModal(id));
     }
 
     @PostMapping
@@ -32,7 +38,7 @@ public class ObjectManagementController {
     }
 
     @GetMapping
-    public ResponseObject detailObjectManagement(@PathVariable(name = "id") Long id) {
-        return null;
+    public ResponseObject detailObjectManagement(@RequestParam(name = "id") Long id) {
+        return new ResponseObject(service.detailObjects(id));
     }
 }

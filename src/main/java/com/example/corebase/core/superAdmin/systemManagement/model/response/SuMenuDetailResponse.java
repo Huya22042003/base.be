@@ -2,7 +2,7 @@ package com.example.corebase.core.superAdmin.systemManagement.model.response;
 
 import org.springframework.beans.factory.annotation.Value;
 
-public interface MenuLoginResponse {
+public interface SuMenuDetailResponse {
 
     @Value("#{target.id}")
     Long getId();
@@ -19,10 +19,21 @@ public interface MenuLoginResponse {
     @Value("#{target.url}")
     String getUrl();
 
+    @Value("#{target.icons}")
+    String getIcons();
+
+    @Value("#{target.is_start}")
+    String getIsStart();
+
+    @Value("#{target.is_active}")
+    String getIsActive();
+
     @Value("#{target.parent_id}")
     Long getParentId();
 
-    @Value("#{target.order_by}")
-    Long getOrderBy();
+    @Value("#{target.type}")
+    String getType();
 
+    @Value("#{target.order_by}")
+    String getOrderBy();
 }

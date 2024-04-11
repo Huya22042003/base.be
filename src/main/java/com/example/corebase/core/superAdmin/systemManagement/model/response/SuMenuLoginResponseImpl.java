@@ -9,7 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MenuLoginResponseImpl {
+public class SuMenuLoginResponseImpl {
 
     private Long id;
 
@@ -19,17 +19,20 @@ public class MenuLoginResponseImpl {
 
     private String url;
 
-    private List<MenuLoginResponseImpl> childId;
+    private String icon;
+
+    private List<SuMenuLoginResponseImpl> childId;
 
     private Long parentId;
 
     private Long orderBy;
 
-    public MenuLoginResponseImpl(Long id, String code, String name, String url, List<MenuLoginResponseImpl> childId, Long orderBy, Long parentId) {
+    public SuMenuLoginResponseImpl(Long id, String code, String name, String url, String icon, List<SuMenuLoginResponseImpl> childId, Long orderBy, Long parentId) {
         this.id = id;
         this.code = code;
         this.name = name;
         this.url = url;
+        this.icon = icon;
         this.childId = childId;
         this.orderBy = orderBy;
         this.parentId = parentId;
