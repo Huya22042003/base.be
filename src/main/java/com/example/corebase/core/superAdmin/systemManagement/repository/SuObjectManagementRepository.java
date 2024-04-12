@@ -4,6 +4,7 @@ import com.example.corebase.core.superAdmin.systemManagement.model.request.SuObj
 import com.example.corebase.core.superAdmin.systemManagement.model.response.SuMenuDetailResponse;
 import com.example.corebase.core.superAdmin.systemManagement.model.response.SuMenuParentResponse;
 import com.example.corebase.core.superAdmin.systemManagement.model.response.SuObjectsManagementResponse;
+import com.example.corebase.infrastructure.constant.ActiveStatus;
 import com.example.corebase.repository.ObjectsRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -61,4 +62,8 @@ public interface SuObjectManagementRepository extends ObjectsRepository {
           where oe.id = :id
     """, nativeQuery = true)
     SuMenuDetailResponse findObjectsDetailById(@Param("id") Long id);
+
+    Long countByCodeAndIsActive(String code, ActiveStatus activeStatus);
+
+    Long countByCodeAndIdNotAndIsActive(String code, Long id, ActiveStatus activeStatus);
 }

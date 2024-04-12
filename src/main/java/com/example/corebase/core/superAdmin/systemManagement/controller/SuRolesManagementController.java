@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,8 @@ public class SuRolesManagementController {
     @Qualifier("roleManagementService")
     private SuRoleManagementService service;
 
-    @GetMapping
-    public ResponseObject getPageRoles(SuRolesManagementFilterRequest request) {
+    @PostMapping("/list")
+    public ResponseObject getPageRoles(@RequestBody SuRolesManagementFilterRequest request) {
         return new ResponseObject(service.getListRoles(request));
     }
 
@@ -40,5 +41,10 @@ public class SuRolesManagementController {
     @DeleteMapping("/{id}")
     public ResponseObject deleteRoles(@PathVariable(name = "id") Long id) {
         return new ResponseObject(service.deleteRoles(id));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseObject detailRoles(@PathVariable(name = "id") Long id) {
+        return new ResponseObject(service.detailRoles(id));
     }
 }

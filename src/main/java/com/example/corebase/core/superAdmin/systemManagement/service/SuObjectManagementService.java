@@ -14,4 +14,5 @@ public interface SuObjectManagementService {
     List<SuMenuParentResponse> getMenuParentModal(Long id);
     ObjectsEntity createOrUpdateObjects(ObjectsEntity objectsEntity);
     SuMenuDetailResponse detailObjects(Long id);
+    ObjectsEntity deleteObjects(Long id);
 }

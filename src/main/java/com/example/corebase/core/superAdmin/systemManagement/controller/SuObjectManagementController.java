@@ -5,6 +5,8 @@ import com.example.corebase.core.superAdmin.systemManagement.model.request.SuMen
 import com.example.corebase.core.superAdmin.systemManagement.model.request.SuObjectManagementFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.service.SuObjectManagementService;
 import com.example.corebase.entity.ObjectsEntity;
+import com.example.corebase.infrastructure.exception.BadRequestCustomException;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -40,5 +42,10 @@ public class SuObjectManagementController {
     @GetMapping
     public ResponseObject detailObjectManagement(@RequestParam(name = "id") Long id) {
         return new ResponseObject(service.detailObjects(id));
+    }
+
+    @DeleteMapping
+    public ResponseObject deleteObjectManagement(@RequestParam(name = "id") Long id) {
+        return new ResponseObject(service.deleteObjects(id));
     }
 }

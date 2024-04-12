@@ -9,4 +9,5 @@ public interface SuRoleManagementService {
     RolesEntity addRoles(RolesEntity rolesEntity);
     RolesEntity updateRoles(RolesEntity rolesEntity);
     RolesEntity deleteRoles(Long id);
+    RolesEntity detailRoles(Long id);
 }
