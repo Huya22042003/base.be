@@ -20,6 +20,7 @@ public interface SuMenuLoginRepository extends ObjectsRepository {
             o.url,
             o.icons,
             o.parent_id ,
+             fn_code_name(o."type") as "type",
             o.order_by
         from objects_entity o
         join user_object uo on uo.object_id = o.id
@@ -27,6 +28,7 @@ public interface SuMenuLoginRepository extends ObjectsRepository {
         where o.type = 'OBJECT_TYPE_1'
         and u.full_name = :fullName
         and o.is_active = 1
+        and o.is_start = 1
         and uo.is_active = 1
         and u.id = 1
         """, nativeQuery = true)

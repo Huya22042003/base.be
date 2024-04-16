@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SuRolesManagementFilterRequest extends PageableRequest {
-    private String code = "";
-    private String name = "";
+    private String roleCode = "";
+    private String roleName = "";
 }

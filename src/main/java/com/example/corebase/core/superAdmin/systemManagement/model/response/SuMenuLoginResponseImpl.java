@@ -27,7 +27,9 @@ public class SuMenuLoginResponseImpl {
 
     private Long orderBy;
 
-    public SuMenuLoginResponseImpl(Long id, String code, String name, String url, String icon, List<SuMenuLoginResponseImpl> childId, Long orderBy, Long parentId) {
+    private String type;
+
+    public SuMenuLoginResponseImpl(Long id, String code, String name, String url, String icon, List<SuMenuLoginResponseImpl> childId, Long orderBy, Long parentId, String type) {
         this.id = id;
         this.code = code;
         this.name = name;
@@ -36,5 +38,6 @@ public class SuMenuLoginResponseImpl {
         this.childId = childId;
         this.orderBy = orderBy;
         this.parentId = parentId;
+        this.type = type;
     }
 }

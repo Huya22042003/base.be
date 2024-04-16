@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.math.BigDecimal;
 
@@ -21,6 +22,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Builder
+@DynamicUpdate
 @Table(name = "premium_type")
 public class PremiumTypesEntity extends PrimaryBase {
 

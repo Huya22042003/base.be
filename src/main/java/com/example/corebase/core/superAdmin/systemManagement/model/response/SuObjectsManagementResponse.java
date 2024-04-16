@@ -1,8 +1,8 @@
 package com.example.corebase.core.superAdmin.systemManagement.model.response;
 
-public interface SuObjectsManagementResponse {
+import com.example.corebase.entity.base.IsIdentified;
 
-    Long getId();
+public interface SuObjectsManagementResponse extends IsIdentified {
 
     String getCode();
 

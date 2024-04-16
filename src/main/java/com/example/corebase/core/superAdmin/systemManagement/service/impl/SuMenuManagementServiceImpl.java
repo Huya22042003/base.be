@@ -25,7 +25,11 @@ public class SuMenuManagementServiceImpl implements SuMenuManagementService {
     @Override
     public List<SuMenuLoginResponseImpl> getMenuLogin() {
         List<SuMenuLoginResponse> menuLoginRepository = repository.getAllMenuLoginResponse("admin");
-//        List<MenuLoginResponseImpl> menuLoginResponses = getMenuLoginResponse(menuLoginRepository);
+        return menuReturn(menuLoginRepository);
+    }
+
+    @Override
+    public List<SuMenuLoginResponseImpl> menuReturn(List<SuMenuLoginResponse> menuLoginRepository) {
         List<SuMenuLoginResponseImpl> root = buildRootMenuTree(menuLoginRepository);
         List<SuMenuLoginResponseImpl> notRoot = buildNotRootMenuTree(menuLoginRepository);
 
@@ -36,6 +40,7 @@ public class SuMenuManagementServiceImpl implements SuMenuManagementService {
         return root;
     }
 
+    @Override
     public List<SuMenuLoginResponseImpl> buildRootMenuTree(List<SuMenuLoginResponse> menuList) {
         List<SuMenuLoginResponseImpl> menuTree = new ArrayList<>();
         for (SuMenuLoginResponse el : menuList) {
@@ -43,7 +48,7 @@ public class SuMenuManagementServiceImpl implements SuMenuManagementService {
                 SuMenuLoginResponseImpl node = new SuMenuLoginResponseImpl(el.getId(), el.getCode(),
                         languageCommon.getMessageProperties(el.getKey()) == "" ?
                                 el.getName() : languageCommon.getMessageProperties(el.getKey()), el.getUrl(),
-                        el.getIcon(), new ArrayList<>(), el.getOrderBy(), el.getParentId());
+                        el.getIcon(), new ArrayList<>(), el.getOrderBy(), el.getParentId(), el.getType());
                 menuTree.add(node);
             }
         }
@@ -51,6 +56,7 @@ public class SuMenuManagementServiceImpl implements SuMenuManagementService {
         return menuTree;
     }
 
+    @Override
     public List<SuMenuLoginResponseImpl> buildNotRootMenuTree(List<SuMenuLoginResponse> menuList) {
         List<SuMenuLoginResponseImpl> menuTree = new ArrayList<>();
 
@@ -58,7 +64,7 @@ public class SuMenuManagementServiceImpl implements SuMenuManagementService {
             if (el.getParentId() != null) {
                 SuMenuLoginResponseImpl node = new SuMenuLoginResponseImpl(el.getId(), el.getCode(),
                         languageCommon.getMessageProperties(el.getKey()), el.getUrl(),
-                        el.getIcon(), new ArrayList<>(), el.getOrderBy(), el.getParentId());
+                        el.getIcon(), new ArrayList<>(), el.getOrderBy(), el.getParentId(), el.getType());
                 menuTree.add(node);
             }
         }
@@ -66,13 +72,14 @@ public class SuMenuManagementServiceImpl implements SuMenuManagementService {
         return menuTree;
     }
 
-    private List<SuMenuLoginResponseImpl> buildSubMenuTree(Long parentId, List<SuMenuLoginResponseImpl> objectsList) {
+    @Override
+    public List<SuMenuLoginResponseImpl> buildSubMenuTree(Long parentId, List<SuMenuLoginResponseImpl> objectsList) {
         List<SuMenuLoginResponseImpl> subMenuTree = new ArrayList<>();
         for (SuMenuLoginResponseImpl el : objectsList) {
             if (parentId.equals(el.getParentId())) {
                 SuMenuLoginResponseImpl node = new SuMenuLoginResponseImpl(el.getId(), el.getCode(),
                         el.getName(), el.getUrl(),
-                        el.getIcon(), buildSubMenuTree(el.getId(), objectsList), el.getOrderBy(), el.getParentId());
+                        el.getIcon(), buildSubMenuTree(el.getId(), objectsList), el.getOrderBy(), el.getParentId(), el.getType());
                 subMenuTree.add(node);
             }
         }

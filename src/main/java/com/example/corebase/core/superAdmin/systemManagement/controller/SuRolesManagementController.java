@@ -2,6 +2,7 @@ package com.example.corebase.core.superAdmin.systemManagement.controller;
 
 import com.example.corebase.core.base.model.ResponseObject;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementFilterRequest;
+import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementRequest;
 import com.example.corebase.core.superAdmin.systemManagement.service.SuRoleManagementService;
 import com.example.corebase.entity.RolesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,12 @@ public class SuRolesManagementController {
     }
 
     @PostMapping
-    public ResponseObject createRoles(RolesEntity rolesEntity) {
+    public ResponseObject createRoles(@RequestBody SuRolesManagementRequest rolesEntity) {
         return new ResponseObject(service.addRoles(rolesEntity));
     }
 
     @PutMapping
-    public ResponseObject updateRoles(RolesEntity rolesEntity) {
+    public ResponseObject updateRoles(@RequestBody SuRolesManagementRequest rolesEntity) {
         return new ResponseObject(service.updateRoles(rolesEntity));
     }
 
@@ -46,5 +47,10 @@ public class SuRolesManagementController {
     @GetMapping("/{id}")
     public ResponseObject detailRoles(@PathVariable(name = "id") Long id) {
         return new ResponseObject(service.detailRoles(id));
+    }
+
+    @GetMapping("/get-list-object")
+    public ResponseObject getAllObject() {
+        return new ResponseObject(service.getMenuLogin());
     }
 }

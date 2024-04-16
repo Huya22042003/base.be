@@ -2,7 +2,11 @@ package com.example.corebase.core.superAdmin.systemManagement.service.impl;
 
 import com.example.corebase.core.base.model.PageableObject;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementFilterRequest;
+import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementRequest;
+import com.example.corebase.core.superAdmin.systemManagement.model.response.SuMenuLoginResponseImpl;
+import com.example.corebase.core.superAdmin.systemManagement.model.response.SuRolesManagementResponse;
 import com.example.corebase.core.superAdmin.systemManagement.repository.SuRolesManagementRepository;
+import com.example.corebase.core.superAdmin.systemManagement.service.SuMenuManagementService;
 import com.example.corebase.core.superAdmin.systemManagement.service.SuRoleManagementService;
 import com.example.corebase.entity.RolesEntity;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
@@ -14,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service("roleManagementService")
@@ -26,27 +31,43 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
     @Autowired
     private LanguageCommon languageCommon;
 
+    @Autowired
+    private SuMenuManagementService service;
+
     @Override
-    public PageableObject<RolesEntity> getListRoles(SuRolesManagementFilterRequest request) {
+    public PageableObject<SuRolesManagementResponse> getListRoles(SuRolesManagementFilterRequest request) {
         return new PageableObject<>(
-                repository.findByRoleNameContainingAndRoleCodeContainingAndIsActive(request.getName(),
-                        request.getCode(), ActiveStatus.ACTIVE, PageableCommon.getPageable(request)));
+                repository.findRoleOnPage(request, PageableCommon.getPageable(request)));
     }
 
     @Override
-    public RolesEntity addRoles(RolesEntity rolesEntity) {
-        if (repository.countByRoleCodeAndIsActive(rolesEntity.getRoleCode(), ActiveStatus.ACTIVE) > 0) {
-            throw new BadRequestCustomException(languageCommon.getMessageProperties("message.system.roles.error.code"));
-        }
-        return repository.save(rolesEntity);
+    public List<SuMenuLoginResponseImpl> getMenuLogin() {
+        return service.menuReturn(repository.getAllMenuLoginResponse());
     }
 
     @Override
-    public RolesEntity updateRoles(RolesEntity rolesEntity) {
-        if (repository.countByRoleCodeAndIdNotAndIsActive(rolesEntity.getRoleCode(), rolesEntity.getId(), ActiveStatus.ACTIVE) > 0) {
+    public RolesEntity addRoles(SuRolesManagementRequest request) {
+        if (repository.countByRoleCodeAndIsActive(request.getRoleCode(), ActiveStatus.ACTIVE) > 0) {
             throw new BadRequestCustomException(languageCommon.getMessageProperties("message.system.roles.error.code"));
         }
-        return repository.save(rolesEntity);
+        RolesEntity entity = new RolesEntity();
+        entity.setIsActive(ActiveStatus.ACTIVE);
+        entity.setRoleCode(request.getRoleCode());
+        entity.setRoleName(request.getRoleName());
+        return repository.save(entity);
+    }
+
+    @Override
+    public RolesEntity updateRoles(SuRolesManagementRequest request) {
+        if (repository.countByRoleCodeAndIdNotAndIsActive(request.getRoleCode(), request.getId(), ActiveStatus.ACTIVE) > 0) {
+            throw new BadRequestCustomException(languageCommon.getMessageProperties("message.system.roles.error.code"));
+        }
+        RolesEntity entity = new RolesEntity();
+        entity.setId(request.getId());
+        entity.setIsActive(ActiveStatus.ACTIVE);
+        entity.setRoleCode(request.getRoleCode());
+        entity.setRoleName(request.getRoleName());
+        return repository.save(entity);
     }
 
     @Override

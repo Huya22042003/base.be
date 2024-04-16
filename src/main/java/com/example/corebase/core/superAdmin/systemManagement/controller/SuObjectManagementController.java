@@ -1,15 +1,19 @@
 package com.example.corebase.core.superAdmin.systemManagement.controller;
 
 import com.example.corebase.core.base.model.ResponseObject;
-import com.example.corebase.core.superAdmin.systemManagement.model.request.SuMenuParentModalFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.SuObjectManagementFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.service.SuObjectManagementService;
 import com.example.corebase.entity.ObjectsEntity;
-import com.example.corebase.infrastructure.exception.BadRequestCustomException;
-import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/super-admin/object-management")
