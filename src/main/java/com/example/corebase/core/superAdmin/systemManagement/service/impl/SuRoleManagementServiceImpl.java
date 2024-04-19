@@ -166,6 +166,7 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
         }
 
         SuRolesManagementDetailRequest request = new SuRolesManagementDetailRequest();
+        request.setId(rolesEntity.get().getId());
         request.setRoleCode(rolesEntity.get().getRoleCode());
         request.setRoleName(rolesEntity.get().getRoleName());
         request.setRolesObjectDetailRequests(roleObjectManagementRepository.getRoleObjectDetail(id));
