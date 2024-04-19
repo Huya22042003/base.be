@@ -15,7 +15,6 @@ import java.util.List;
 public class SuMenuManagementController {
 
     @Autowired
-    @Qualifier("objectLoginService")
     private SuMenuManagementService objectLoginService;
 
     @GetMapping("/get-object")

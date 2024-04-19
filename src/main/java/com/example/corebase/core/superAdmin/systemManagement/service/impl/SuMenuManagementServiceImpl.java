@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service("objectLoginService")
+@Service("suMenuManagementServiceImpl")
 public class SuMenuManagementServiceImpl implements SuMenuManagementService {
 
     @Autowired

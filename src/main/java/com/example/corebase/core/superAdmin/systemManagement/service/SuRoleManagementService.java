@@ -1,6 +1,7 @@
 package com.example.corebase.core.superAdmin.systemManagement.service;
 
 import com.example.corebase.core.base.model.PageableObject;
+import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementDetailRequest;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementFilterRequest;
 import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementRequest;
 import com.example.corebase.core.superAdmin.systemManagement.model.response.SuMenuLoginResponseImpl;
@@ -15,5 +16,5 @@ public interface SuRoleManagementService {
     RolesEntity addRoles(SuRolesManagementRequest request);
     RolesEntity updateRoles(SuRolesManagementRequest request);
     RolesEntity deleteRoles(Long id);
-    RolesEntity detailRoles(Long id);
+    SuRolesManagementDetailRequest detailRoles(Long id);
 }
