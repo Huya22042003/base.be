@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/code")
+@RequestMapping("/code")
 public class CodeMngController {
 
     private final Logger log = LoggerFactory.getLogger(CodeMngController.class);

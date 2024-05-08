@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/super-admin/roles")
+@RequestMapping("/super-admin/roles")
 public class SuRolesManagementController {
 
     @Autowired

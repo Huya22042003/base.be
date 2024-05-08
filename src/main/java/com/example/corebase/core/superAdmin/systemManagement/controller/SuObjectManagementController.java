@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/super-admin/object-management")
+@RequestMapping("/super-admin/object-management")
 public class SuObjectManagementController {
 
     @Autowired

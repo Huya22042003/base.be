@@ -110,6 +110,11 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
 
         Map<Long, RoleObjectEntity> roleObjectMap = getAllRoleObjectByIdRole(request.getId());
 
+        roleObjectManagementRepository.saveAll(roleObjectMap.values().stream().map(el -> {
+            el.setIsActive(ActiveStatus.NOT_ACTIVE);
+            return el;
+        }).collect(Collectors.toList()));
+
         List<RoleObjectEntity> listRoles = request.getObject().stream().map(el -> {
             ObjectsEntity objectsEntity = objectManagementRepository.findById(el).orElse(null);
             if (objectsEntity != null) {
@@ -126,11 +131,6 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
             }
             return null;
         }).filter(el -> el != null).collect(Collectors.toList());
-
-        roleObjectManagementRepository.saveAll(roleObjectMap.values().stream().map(el -> {
-            el.setIsActive(ActiveStatus.NOT_ACTIVE);
-            return el;
-        }).collect(Collectors.toList()));
 
         roleObjectManagementRepository.saveAll(listRoles);
 

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@RequestMapping("/api/super-admin/premium-management")
+@RequestMapping("/super-admin/premium-management")
 @RestController
 public class PremiumManagementController {
 
