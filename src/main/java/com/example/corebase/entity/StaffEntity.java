@@ -8,6 +8,8 @@ import jakarta.persistence.Table;
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.Date;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,8 +20,11 @@ import org.hibernate.annotations.DynamicUpdate;
 @Table(name = "staff_entity")
 public class StaffEntity extends PrimaryBase {
 
+    @Column(name = "code")
+    private String code;
+
     @Column(name = "username")
-    private String staffName;
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -32,4 +37,28 @@ public class StaffEntity extends PrimaryBase {
 
     @Column(name = "is_active")
     private ActiveStatus isActive;
+
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "country")
+    private String country;
+
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "date")
+    private Date date;
+
+    @Column(name = "roles_id")
+    private Long rolesId;
 }
