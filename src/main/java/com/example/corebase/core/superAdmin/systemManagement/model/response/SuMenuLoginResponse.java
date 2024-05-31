@@ -3,6 +3,8 @@ package com.example.corebase.core.superAdmin.systemManagement.model.response;
 import com.example.corebase.entity.base.IsIdentified;
 import org.springframework.beans.factory.annotation.Value;
 
+import java.util.UUID;
+
 public interface SuMenuLoginResponse extends IsIdentified {
 
     @Value("#{target.code}")
@@ -21,7 +23,7 @@ public interface SuMenuLoginResponse extends IsIdentified {
     String getIcon();
 
     @Value("#{target.parent_id}")
-    Long getParentId();
+    UUID getParentId();
 
     @Value("#{target.order_by}")
     Long getOrderBy();

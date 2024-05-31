@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service("suMenuManagementServiceImpl")
 public class SuMenuManagementServiceImpl implements SuMenuManagementService {
@@ -73,7 +74,7 @@ public class SuMenuManagementServiceImpl implements SuMenuManagementService {
     }
 
     @Override
-    public List<SuMenuLoginResponseImpl> buildSubMenuTree(Long parentId, List<SuMenuLoginResponseImpl> objectsList) {
+    public List<SuMenuLoginResponseImpl> buildSubMenuTree(UUID parentId, List<SuMenuLoginResponseImpl> objectsList) {
         List<SuMenuLoginResponseImpl> subMenuTree = new ArrayList<>();
         for (SuMenuLoginResponseImpl el : objectsList) {
             if (parentId.equals(el.getParentId())) {

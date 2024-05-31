@@ -8,11 +8,13 @@ import com.example.corebase.core.superAdmin.systemManagement.model.response.SuOb
 import com.example.corebase.entity.ObjectsEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface SuObjectManagementService {
     PageableObject<SuObjectsManagementResponse> getAllObjects(SuObjectManagementFilterRequest suObjectManagementFilterRequest);
-    List<SuMenuParentResponse> getMenuParentModal(Long id);
+    List<SuMenuParentResponse> getMenuParentModal(String id);
+    List<SuMenuParentResponse> getMenuParentModal();
     ObjectsEntity createOrUpdateObjects(ObjectsEntity objectsEntity);
-    SuMenuDetailResponse detailObjects(Long id);
-    ObjectsEntity deleteObjects(Long id);
+    SuMenuDetailResponse detailObjects(UUID id);
+    ObjectsEntity deleteObjects(UUID id);
 }

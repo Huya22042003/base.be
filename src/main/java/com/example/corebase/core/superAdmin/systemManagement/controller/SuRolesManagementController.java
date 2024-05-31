@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/super-admin/roles")
 public class SuRolesManagementController {
@@ -40,13 +42,13 @@ public class SuRolesManagementController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseObject deleteRoles(@PathVariable(name = "id") Long id) {
-        return new ResponseObject(service.deleteRoles(id));
+    public ResponseObject deleteRoles(@PathVariable(name = "id") String id) {
+        return new ResponseObject(service.deleteRoles(UUID.fromString(id)));
     }
 
     @GetMapping("/{id}")
-    public ResponseObject detailRoles(@PathVariable(name = "id") Long id) {
-        return new ResponseObject(service.detailRoles(id));
+    public ResponseObject detailRoles(@PathVariable(name = "id") String id) {
+        return new ResponseObject(service.detailRoles(UUID.fromString(id)));
     }
 
     @GetMapping("/get-list-object")

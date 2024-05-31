@@ -2,7 +2,6 @@ package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.PrimaryBase;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
-import com.example.corebase.infrastructure.constant.TypeObjects;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -12,6 +11,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
+
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -38,9 +39,6 @@ public class ObjectsEntity extends PrimaryBase {
     @Column(name = "url")
     private String url;
 
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
-
     @Column(name = "is_start")
     private ActiveStatus isStart;
 
@@ -51,5 +49,5 @@ public class ObjectsEntity extends PrimaryBase {
     private String key;
 
     @Column(name = "parent_id")
-    private Long parentId;
+    private UUID parentId;
 }

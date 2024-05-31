@@ -1,7 +1,6 @@
 package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.PrimaryBase;
-import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -19,9 +18,6 @@ import org.hibernate.annotations.Immutable;
 @Immutable
 @Table(name = "code_mng")
 public class CodeMngEntity extends PrimaryBase {
-
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
 
     @Column(name = "cd_id")
     private String cdId;

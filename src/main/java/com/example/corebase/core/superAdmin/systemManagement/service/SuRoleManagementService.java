@@ -9,12 +9,13 @@ import com.example.corebase.core.superAdmin.systemManagement.model.response.SuRo
 import com.example.corebase.entity.RolesEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface SuRoleManagementService {
     PageableObject<SuRolesManagementResponse> getListRoles(SuRolesManagementFilterRequest request);
     List<SuMenuLoginResponseImpl> getMenuLogin();
     RolesEntity addRoles(SuRolesManagementRequest request);
     RolesEntity updateRoles(SuRolesManagementRequest request);
-    RolesEntity deleteRoles(Long id);
-    SuRolesManagementDetailRequest detailRoles(Long id);
+    RolesEntity deleteRoles(UUID id);
+    SuRolesManagementDetailRequest detailRoles(UUID id);
 }

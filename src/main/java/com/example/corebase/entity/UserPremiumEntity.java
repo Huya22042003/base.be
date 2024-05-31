@@ -32,6 +32,4 @@ public class UserPremiumEntity extends PrimaryBase {
     @JoinColumn(name = "premium_id")
     private PremiumTypesEntity premiumTypesEntity;
 
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
 }

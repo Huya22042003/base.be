@@ -43,6 +43,6 @@ public class AuthLoginServiceImpl implements AuthLoginService {
 
     @Override
     public UsersEntity getAuth() {
-        return usersRepository.findById(1L).get();
+        return usersRepository.findAll().get(0);
     }
 }

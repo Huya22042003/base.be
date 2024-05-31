@@ -1,7 +1,6 @@
 package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.PrimaryBase;
-import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -28,6 +27,4 @@ public class RolesEntity extends PrimaryBase {
     @Column(name = "role_code")
     private String roleCode;
 
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
 }

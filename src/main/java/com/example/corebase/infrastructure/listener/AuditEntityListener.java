@@ -1,6 +1,7 @@
 package com.example.corebase.infrastructure.listener;
 
 import com.example.corebase.entity.base.AuditEntity;
+import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 
@@ -10,13 +11,14 @@ public class AuditEntityListener {
 
     @PrePersist
     private void onCreate(AuditEntity entity) {
-        entity.setCreatedDate(getCurrentTime());
-        entity.setLastModifiedDate(getCurrentTime());
+        entity.setCreatedDate(getCurrentTime().getTime());
+        entity.setLastModifiedDate(getCurrentTime().getTime());
+        entity.setIsActive(ActiveStatus.ACTIVE);
     }
 
     @PreUpdate
     private void onUpdate(AuditEntity entity) {
-        entity.setLastModifiedDate(getCurrentTime());
+        entity.setLastModifiedDate(getCurrentTime().getTime());
     }
 
     private Date getCurrentTime() {

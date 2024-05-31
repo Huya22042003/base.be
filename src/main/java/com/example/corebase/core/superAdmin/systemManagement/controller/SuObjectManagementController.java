@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/super-admin/object-management")
 public class SuObjectManagementController {
@@ -29,8 +31,13 @@ public class SuObjectManagementController {
     }
 
     @GetMapping("/menu-parent")
-    public ResponseObject getMenuParentModal(@RequestParam(name = "id") Long id) {
+    public ResponseObject getMenuParentModal(@RequestParam(name = "id") String id) {
         return new ResponseObject(service.getMenuParentModal(id));
+    }
+
+    @GetMapping("/menu-parent-create")
+    public ResponseObject getMenuParentModal() {
+        return new ResponseObject(service.getMenuParentModal());
     }
 
     @PostMapping
@@ -44,12 +51,12 @@ public class SuObjectManagementController {
     }
 
     @GetMapping
-    public ResponseObject detailObjectManagement(@RequestParam(name = "id") Long id) {
-        return new ResponseObject(service.detailObjects(id));
+    public ResponseObject detailObjectManagement(@RequestParam(name = "id") String id) {
+        return new ResponseObject(service.detailObjects(UUID.fromString(id)));
     }
 
     @DeleteMapping
-    public ResponseObject deleteObjectManagement(@RequestParam(name = "id") Long id) {
-        return new ResponseObject(service.deleteObjects(id));
+    public ResponseObject deleteObjectManagement(@RequestParam(name = "id") String id) {
+        return new ResponseObject(service.deleteObjects(UUID.fromString(id)));
     }
 }

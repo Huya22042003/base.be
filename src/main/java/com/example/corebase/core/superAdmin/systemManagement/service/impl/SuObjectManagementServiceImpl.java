@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service("objectManagementServiceImpl")
 public class SuObjectManagementServiceImpl implements SuObjectManagementService {
@@ -38,8 +39,13 @@ public class SuObjectManagementServiceImpl implements SuObjectManagementService 
     }
 
     @Override
-    public List<SuMenuParentResponse> getMenuParentModal(Long id) {
-        return repository.getMenuParentList(id);
+    public List<SuMenuParentResponse> getMenuParentModal(String id) {
+        return repository.getMenuParentList(UUID.fromString(id));
+    }
+
+    @Override
+    public List<SuMenuParentResponse> getMenuParentModal() {
+        return repository.getMenuParentList();
     }
 
     @Override
@@ -47,18 +53,21 @@ public class SuObjectManagementServiceImpl implements SuObjectManagementService 
     public ObjectsEntity createOrUpdateObjects(ObjectsEntity objectsEntity) {
         if (objectsEntity.getId() == null) {
             if (repository.countByCodeAndIsActive(objectsEntity.getCode(), ActiveStatus.ACTIVE) > 0) {
-                throw new BadRequestCustomException(languageCommon.getMessageProperties("message.system.objects.error.code"));
+                throw new BadRequestCustomException(languageCommon.
+                        getMessageProperties("message.system.objects.error.code"));
             }
         } else {
-            if (repository.countByCodeAndIdNotAndIsActive(objectsEntity.getCode(), objectsEntity.getId(), ActiveStatus.ACTIVE) > 0) {
-                throw new BadRequestCustomException(languageCommon.getMessageProperties("message.system.objects.error.code"));
+            if (repository.countByCodeAndIdNotAndIsActive(objectsEntity.getCode(),
+                    objectsEntity.getId(), ActiveStatus.ACTIVE) > 0) {
+                throw new BadRequestCustomException(languageCommon.
+                        getMessageProperties("message.system.objects.error.code"));
             }
         }
         return repository.save(objectsEntity);
     }
 
     @Override
-    public SuMenuDetailResponse detailObjects(Long id) {
+    public SuMenuDetailResponse detailObjects(UUID id) {
         SuMenuDetailResponse detailResponse = repository.findObjectsDetailById(id);
         if (detailResponse == null) {
             throw new BadRequestCustomException(languageCommon.getMessageProperties("message.system.objects.error.not_found"), StatusExceptionConstants.ERROR_UNKNOWN);
@@ -69,7 +78,7 @@ public class SuObjectManagementServiceImpl implements SuObjectManagementService 
 
     @Override
     @Transactional
-    public ObjectsEntity deleteObjects(Long id) {
+    public ObjectsEntity deleteObjects(UUID id) {
         Optional<ObjectsEntity> optional = repository.findById(id);
         if (optional.isEmpty()) {
             throw new BadRequestCustomException(languageCommon.getMessageProperties("message.system.objects.error.not_found"), StatusExceptionConstants.ERROR_UNKNOWN);

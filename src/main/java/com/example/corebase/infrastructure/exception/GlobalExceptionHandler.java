@@ -21,6 +21,7 @@ public class GlobalExceptionHandler {
             return ResponseEntity.notFound().build();
         } else {
             System.out.println(gson.toJson(ex.getMessage()) + "INTERNAL_SERVER_ERROR");
+            ex.printStackTrace();
             return new ResponseEntity<>(ex.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

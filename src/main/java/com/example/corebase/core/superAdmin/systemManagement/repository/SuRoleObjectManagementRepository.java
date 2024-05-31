@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository("suRoleObjectManagementRepository")
 public interface SuRoleObjectManagementRepository extends RoleObjectRepository {
@@ -17,11 +18,11 @@ public interface SuRoleObjectManagementRepository extends RoleObjectRepository {
         where ro.is_active = 1 and oe.is_active = 1
         and ro.role_id = :idRole
     """, nativeQuery = true)
-    List<SuRolesObjectDetailRequest> getRoleObjectDetail(@Param("idRole") Long idRole);
+    List<SuRolesObjectDetailRequest> getRoleObjectDetail(@Param("idRole") UUID idRole);
 
     @Query(value = """
         SELECT ro.* FROM role_object ro 
         where ro.role_id = :idRole
     """, nativeQuery = true)
-    List<RoleObjectEntity> getAllRoleObjectByRoleId(@Param("idRole") Long idRole);
+    List<RoleObjectEntity> getAllRoleObjectByRoleId(@Param("idRole") UUID idRole);
 }

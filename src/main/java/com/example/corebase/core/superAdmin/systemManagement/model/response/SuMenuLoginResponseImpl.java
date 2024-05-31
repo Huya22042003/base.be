@@ -5,13 +5,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
 @NoArgsConstructor
 public class SuMenuLoginResponseImpl {
 
-    private Long id;
+    private UUID id;
 
     private String code;
 
@@ -23,13 +24,13 @@ public class SuMenuLoginResponseImpl {
 
     private List<SuMenuLoginResponseImpl> childId;
 
-    private Long parentId;
+    private UUID parentId;
 
     private Long orderBy;
 
     private String type;
 
-    public SuMenuLoginResponseImpl(Long id, String code, String name, String url, String icon, List<SuMenuLoginResponseImpl> childId, Long orderBy, Long parentId, String type) {
+    public SuMenuLoginResponseImpl(UUID id, String code, String name, String url, String icon, List<SuMenuLoginResponseImpl> childId, Long orderBy, UUID parentId, String type) {
         this.id = id;
         this.code = code;
         this.name = name;

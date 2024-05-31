@@ -1,8 +1,6 @@
 package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.PrimaryBase;
-import com.example.corebase.infrastructure.constant.ActiveStatus;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -32,6 +30,4 @@ public class RoleObjectEntity extends PrimaryBase {
     @JoinColumn(name = "role_id")
     private RolesEntity rolesEntityId;
 
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
 }

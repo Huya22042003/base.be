@@ -1,7 +1,6 @@
 package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.PrimaryBase;
-import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -10,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
+
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -36,8 +37,5 @@ public class FileMngEntity extends PrimaryBase {
     private String producerCode;
 
     @Column(name = "producer_id")
-    private Long producerId;
-
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
+    private UUID producerId;
 }

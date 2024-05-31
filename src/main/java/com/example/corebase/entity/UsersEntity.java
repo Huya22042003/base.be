@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
+import java.util.UUID;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -36,7 +38,10 @@ public class UsersEntity extends PrimaryBase {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
+    @Column(name = "phone")
+    private String phone;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private RolesEntity roleId;
 }

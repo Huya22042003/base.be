@@ -13,6 +13,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Repository("objectManagementRepository")
 public interface SuObjectManagementRepository extends ObjectsRepository {
@@ -43,7 +44,19 @@ public interface SuObjectManagementRepository extends ObjectsRepository {
               where oe.is_active = 1 and oe.id <> :id
               and oe.parent_id is null
     """, nativeQuery = true)
-    List<SuMenuParentResponse> getMenuParentList(@Param("id") Long id);
+    List<SuMenuParentResponse> getMenuParentList(@Param("id") UUID id);
+
+    @Query(value = """
+              select
+                oe.id as id,
+                oe.code as code,
+                oe."name" as name,
+                oe."key" as "key"
+              from objects_entity oe
+              where oe.is_active = 1
+              and oe.parent_id is null
+    """, nativeQuery = true)
+    List<SuMenuParentResponse> getMenuParentList();
 
     @Query(value = """
           select
@@ -61,9 +74,9 @@ public interface SuObjectManagementRepository extends ObjectsRepository {
           from objects_entity oe
           where oe.id = :id
     """, nativeQuery = true)
-    SuMenuDetailResponse findObjectsDetailById(@Param("id") Long id);
+    SuMenuDetailResponse findObjectsDetailById(@Param("id") UUID id);
 
     Long countByCodeAndIsActive(String code, ActiveStatus activeStatus);
 
-    Long countByCodeAndIdNotAndIsActive(String code, Long id, ActiveStatus activeStatus);
+    Long countByCodeAndIdNotAndIsActive(String code, UUID id, ActiveStatus activeStatus);
 }

@@ -28,6 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service("roleManagementService")
@@ -108,7 +109,7 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
         entity.setRoleCode(request.getRoleCode());
         entity.setRoleName(request.getRoleName());
 
-        Map<Long, RoleObjectEntity> roleObjectMap = getAllRoleObjectByIdRole(request.getId());
+        Map<UUID, RoleObjectEntity> roleObjectMap = getAllRoleObjectByIdRole(request.getId());
 
         roleObjectManagementRepository.saveAll(roleObjectMap.values().stream().map(el -> {
             el.setIsActive(ActiveStatus.NOT_ACTIVE);
@@ -137,8 +138,8 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
         return repository.save(entity);
     }
 
-    public Map<Long, RoleObjectEntity> getAllRoleObjectByIdRole(Long id) {
-        Map<Long, RoleObjectEntity> roleObjectEntityMap = new HashMap<>();
+    public Map<UUID, RoleObjectEntity> getAllRoleObjectByIdRole(UUID id) {
+        Map<UUID, RoleObjectEntity> roleObjectEntityMap = new HashMap<>();
         roleObjectManagementRepository.getAllRoleObjectByRoleId(id).stream().forEach(el -> {
             roleObjectEntityMap.put(el.getObjectsEntityId().getId(), el);
         });
@@ -146,7 +147,7 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
     }
 
     @Override
-    public RolesEntity deleteRoles(Long id) {
+    public RolesEntity deleteRoles(UUID id) {
         Optional<RolesEntity> rolesEntity = repository.findById(id);
 
         if (rolesEntity.isEmpty()) {
@@ -158,7 +159,7 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
     }
 
     @Override
-    public SuRolesManagementDetailRequest detailRoles(Long id) {
+    public SuRolesManagementDetailRequest detailRoles(UUID id) {
         Optional<RolesEntity> rolesEntity = repository.findById(id);
 
         if (rolesEntity.isEmpty()) {

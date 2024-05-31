@@ -25,9 +25,6 @@ public class DBGenerator implements CommandLineRunner {
     private ObjectsRepository objectsRepository;
 
     @Autowired
-    private ObjectPremiumRepository objectPremiumRepository;
-
-    @Autowired
     private PremiumTypesRepository premiumTypesRepository;
 
     @Autowired

@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,5 +17,5 @@ public class SuRolesManagementRequest extends IsIdentifiedRequest {
 
     private String roleCode;
     private String roleName;
-    private List<Long> object;
+    private List<UUID> object;
 }

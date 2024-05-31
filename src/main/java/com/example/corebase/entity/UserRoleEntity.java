@@ -30,6 +30,4 @@ public class UserRoleEntity extends PrimaryBase {
     @JoinColumn(name = "role_id")
     private RolesEntity rolesEntityId;
 
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
 }

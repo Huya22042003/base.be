@@ -1,5 +1,6 @@
 package com.example.corebase.entity.base;
 
+import com.example.corebase.infrastructure.constant.ActiveStatus;
 import com.example.corebase.infrastructure.listener.AuditEntityListener;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -16,14 +17,17 @@ import java.util.Date;
 public abstract class AuditEntity {
 
     @Column(updatable = false)
-    private Date createdDate;
-
-    @Column
-    private Date lastModifiedDate;
+    private ActiveStatus isActive;
 
     @Column(updatable = false)
-    private Long createdBy;
+    private Long createdDate;
 
     @Column
-    private Long lastModifiedBy;
+    private Long lastModifiedDate;
+
+    @Column(updatable = false)
+    private String createdBy;
+
+    @Column
+    private String lastModifiedBy;
 }

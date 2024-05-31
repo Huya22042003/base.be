@@ -1,11 +1,16 @@
 package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.PrimaryBase;
-import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.Date;
@@ -35,9 +40,6 @@ public class StaffEntity extends PrimaryBase {
     @Column(name = "full_name")
     private String fullName;
 
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
-
     @Column(name = "gender")
     private String gender;
 
@@ -59,6 +61,7 @@ public class StaffEntity extends PrimaryBase {
     @Column(name = "date")
     private Date date;
 
-    @Column(name = "roles_id")
-    private Long rolesId;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private RolesEntity roleId;
 }

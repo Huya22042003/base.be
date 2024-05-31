@@ -30,7 +30,6 @@ public interface SuMenuLoginRepository extends ObjectsRepository {
         and o.is_active = 1
         and o.is_start = 1
         and uo.is_active = 1
-        and u.id = 1
         """, nativeQuery = true)
     List<SuMenuLoginResponse> getAllMenuLoginResponse(@Param("fullName") String fullName);
 }

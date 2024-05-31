@@ -35,9 +35,6 @@ public class PremiumTypesEntity extends PrimaryBase {
     @Column(name = "money")
     private BigDecimal money;
 
-    @Column(name = "is_active")
-    private ActiveStatus isActive;
-
     @Column(name = "note")
     private String note;
 
@@ -48,4 +45,6 @@ public class PremiumTypesEntity extends PrimaryBase {
     @JoinColumn(name = "role_id")
     private RolesEntity rolesEntityId;
 
+    @Column(name = "status")
+    private ActiveStatus status;
 }

@@ -11,7 +11,7 @@ public class ConfigSwagger {
     public GroupedOpenApi customApi() {
         return GroupedOpenApi.builder()
                 .group("base-api")
-                .pathsToMatch("/api/**")
+                .pathsToMatch("/**")
                 .build();
     }
 }
