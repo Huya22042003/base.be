@@ -1,16 +1,12 @@
 package com.example.corebase.core.superAdmin.informationManagement.model.request;
 
-import com.example.corebase.entity.RolesEntity;
-import com.example.corebase.infrastructure.constant.ActiveStatus;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @Getter
@@ -33,5 +29,13 @@ public class SuPremiumTypeCreateRequest {
 
     private UUID roleId;
 
-    private ActiveStatus status;
+    private String status;
+
+    private String type;
+
+    private String isDefault;
+
+    private String urlNote;
+
+    private List<UUID> objectGroup;
 }

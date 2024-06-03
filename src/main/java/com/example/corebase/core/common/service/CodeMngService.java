@@ -40,6 +40,7 @@ public class CodeMngService {
         return listResult.stream().map(code -> {
             CodeMngDTO codeMngDTO = new CodeMngDTO();
             codeMngDTO.setValue(code.getCdId());
+            codeMngDTO.setType(code.getType());
             codeMngDTO.setLabel(languageCommon.getMessageProperties(code.getCdKey()) == "" ?
                     code.getCdName() : languageCommon.getMessageProperties(code.getCdKey()));
             return codeMngDTO;

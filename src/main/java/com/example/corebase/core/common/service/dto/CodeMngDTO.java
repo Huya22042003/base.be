@@ -19,4 +19,5 @@ public class CodeMngDTO implements Serializable {
 
     private String label;
 
+    private String type;
 }

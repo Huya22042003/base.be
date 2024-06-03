@@ -1,11 +1,8 @@
 package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.PrimaryBase;
-import com.example.corebase.infrastructure.constant.ActiveStatus;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,6 +12,7 @@ import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
@@ -38,13 +36,21 @@ public class PremiumTypesEntity extends PrimaryBase {
     @Column(name = "note")
     private String note;
 
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "is_default")
+    private String isDefault;
+
+    @Column(name = "url_note")
+    private String urlNote;
+
     @Column(name = "level")
     private Long level;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private RolesEntity rolesEntityId;
+    @Column(name = "role_id")
+    private UUID rolesEntityId;
 
     @Column(name = "status")
-    private ActiveStatus status;
+    private String status;
 }

@@ -13,7 +13,7 @@ import java.util.UUID;
 public interface CodeMngRepository extends JpaRepository<CodeMngEntity, UUID> {
 
     @Query(value = """
-                select cd_id as cdId, cd_key as cdKey , cd_name as cdName from code_mng cm where cd_category in :listCdCategory
+                select cd_id as cdId, cd_key as cdKey , cd_name as cdName, cd_category as type from code_mng cm where cd_category in :listCdCategory
             """, nativeQuery = true)
     List<CodeMngResponse> findByUpCdIdIn(@Param("listCdCategory") List<String> listCdCategory);
 
@@ -23,5 +23,7 @@ public interface CodeMngRepository extends JpaRepository<CodeMngEntity, UUID> {
         String getCdKey();
 
         String getCdName();
+
+        String getType();
     }
 }

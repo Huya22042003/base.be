@@ -8,7 +8,6 @@ import com.example.corebase.core.superAdmin.informationManagement.repository.SuP
 import com.example.corebase.core.superAdmin.informationManagement.service.SuPremiumManagementService;
 import com.example.corebase.entity.PremiumTypesEntity;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
-import com.example.corebase.repository.RolesRepository;
 import com.example.corebase.util.PageableCommon;
 import com.example.corebase.util.SimpleObjectResponse;
 import jakarta.transaction.Transactional;
@@ -26,9 +25,6 @@ public class SuPremiumManagementServiceImpl implements SuPremiumManagementServic
     @Qualifier("premiumManagementRepository")
     private SuPremiumManagementRepository repository;
 
-    @Autowired
-    private RolesRepository rolesRepository;
-
     @Override
     public PageableObject<SuPremiumManagementResponse> getAllPremiumType(SuPremiumTypeFilterRequest request) {
         return new PageableObject<>(repository.getPagePremiumManagement(request, PageableCommon.getPageable(request)));
@@ -42,7 +38,7 @@ public class SuPremiumManagementServiceImpl implements SuPremiumManagementServic
         entity.setCode(premiumTypesEntity.getCode());
         entity.setName(premiumTypesEntity.getName());
         entity.setLevel(premiumTypesEntity.getLevel());
-        entity.setRolesEntityId(rolesRepository.findById(premiumTypesEntity.getRoleId()).orElse(null));
+        entity.setRolesEntityId(premiumTypesEntity.getRoleId());
         entity.setMoney(premiumTypesEntity.getMoney());
         entity.setNote(premiumTypesEntity.getNote());
         entity.setStatus(premiumTypesEntity.getStatus());
@@ -59,7 +55,7 @@ public class SuPremiumManagementServiceImpl implements SuPremiumManagementServic
         entity.setCode(premiumTypesEntity.getCode());
         entity.setName(premiumTypesEntity.getName());
         entity.setLevel(premiumTypesEntity.getLevel());
-        entity.setRolesEntityId(rolesRepository.findById(premiumTypesEntity.getRoleId()).orElse(null));
+        entity.setRolesEntityId(premiumTypesEntity.getRoleId());
         entity.setMoney(premiumTypesEntity.getMoney());
         entity.setNote(premiumTypesEntity.getNote());
         entity.setStatus(premiumTypesEntity.getStatus());

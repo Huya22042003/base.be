@@ -2,6 +2,8 @@ package com.example.corebase.core.superAdmin.informationManagement.model.respons
 
 import com.example.corebase.entity.base.IsIdentified;
 
+import java.math.BigDecimal;
+
 public interface SuPremiumManagementResponse extends IsIdentified {
 
     String getCode();
@@ -12,9 +14,13 @@ public interface SuPremiumManagementResponse extends IsIdentified {
 
     String getRoleName();
 
-    String getMoney();
+    BigDecimal getMoney();
 
     String getNote();
 
     String getStatus();
+
+    String getIsDefault();
+
+    String getType();
 }

@@ -37,9 +37,9 @@ public interface SuObjectsGroupRepository extends ObjectGroupRepository {
         AND (:#{#req.code} IS NULL OR og.code LIKE %:#{#req.code}%)
         AND (:#{#req.name} IS NULL OR og.name LIKE %:#{#req.name}%)
         AND (:#{#req.subName} IS NULL OR og.sub_name LIKE %:#{#req.subName}%)
-        AND (:#{#req.roleId} IS NULL OR og.role_id = :#{#req.roleId})
-        AND (:#{#req.moduleId} IS NULL OR og.module_id = :#{#req.moduleId})
-        AND (:#{#req.status} IS NULL OR og.status LIKE %:#{#req.status}%)
+        AND (:#{#req.roleId == NULL ? '' : #req.roleId} = '' OR og.role_id = :#{#req.roleId})
+        AND (:#{#req.moduleId == NULL ? '' : #req.moduleId} = '' OR og.module_id = :#{#req.moduleId})
+        AND (:#{#req.status == NULL ? '' : #req.status} = '' OR og.status LIKE %:#{#req.status}%)
     """, nativeQuery = true)
     Page<SuObjectGroupResponse> getAllObjectGroup(@Param("req") SuObjectGroupFilterRequest req, Pageable pageable);
 
