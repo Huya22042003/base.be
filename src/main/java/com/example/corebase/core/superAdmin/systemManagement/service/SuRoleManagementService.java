@@ -13,7 +13,6 @@ import java.util.UUID;
 
 public interface SuRoleManagementService {
     PageableObject<SuRolesManagementResponse> getListRoles(SuRolesManagementFilterRequest request);
-    List<SuMenuLoginResponseImpl> getMenuLogin();
     RolesEntity addRoles(SuRolesManagementRequest request);
     RolesEntity updateRoles(SuRolesManagementRequest request);
     RolesEntity deleteRoles(UUID id);

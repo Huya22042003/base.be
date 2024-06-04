@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/token")
+@RequestMapping("/developer/json-token")
 public class DecodeTokenController {
 
     @Autowired
     private TokenUtils tokenUtils;
 
     @PostMapping("/decode-token")
-    public ResponseObject decodeToken(@RequestBody String token) {
-        return new ResponseObject(tokenUtils.decodeToken(token));
+    public ResponseObject decodeToken(@RequestBody Map<String, String> token) {
+        return new ResponseObject(tokenUtils.decodeToken(token.get("token")));
     }
 
     @PostMapping("/gen-token")

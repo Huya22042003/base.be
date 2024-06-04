@@ -20,8 +20,8 @@ import java.util.UUID;
 @Setter
 @Builder
 @DynamicUpdate
-@Table(name = "staff_object_entity")
-public class StaffObjectEntity extends PrimaryBase {
+@Table(name = "staff_object_group")
+public class StaffObjectGroup extends PrimaryBase {
 
     @Column(name = "staff_id")
     private UUID staffId;

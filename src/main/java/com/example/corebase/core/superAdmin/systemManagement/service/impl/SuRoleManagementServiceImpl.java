@@ -6,13 +6,9 @@ import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRol
 import com.example.corebase.core.superAdmin.systemManagement.model.request.SuRolesManagementRequest;
 import com.example.corebase.core.superAdmin.systemManagement.model.response.SuMenuLoginResponseImpl;
 import com.example.corebase.core.superAdmin.systemManagement.model.response.SuRolesManagementResponse;
-import com.example.corebase.core.superAdmin.systemManagement.repository.SuObjectManagementRepository;
-import com.example.corebase.core.superAdmin.systemManagement.repository.SuRoleObjectManagementRepository;
 import com.example.corebase.core.superAdmin.systemManagement.repository.SuRolesManagementRepository;
 import com.example.corebase.core.superAdmin.systemManagement.service.SuMenuManagementService;
 import com.example.corebase.core.superAdmin.systemManagement.service.SuRoleManagementService;
-import com.example.corebase.entity.ObjectsEntity;
-import com.example.corebase.entity.RoleObjectEntity;
 import com.example.corebase.entity.RolesEntity;
 import com.example.corebase.infrastructure.constant.ActiveStatus;
 import com.example.corebase.infrastructure.constant.StatusExceptionConstants;
@@ -24,12 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service("roleManagementService")
 public class SuRoleManagementServiceImpl implements SuRoleManagementService {
@@ -41,25 +34,10 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
     @Autowired
     private LanguageCommon languageCommon;
 
-    @Autowired
-    @Qualifier("suMenuManagementServiceImpl")
-    private SuMenuManagementService service;
-
-    @Autowired
-    private SuRoleObjectManagementRepository roleObjectManagementRepository;
-
-    @Autowired
-    private SuObjectManagementRepository objectManagementRepository;
-
     @Override
     public PageableObject<SuRolesManagementResponse> getListRoles(SuRolesManagementFilterRequest request) {
         return new PageableObject<>(
                 repository.findRoleOnPage(request, PageableCommon.getPageable(request)));
-    }
-
-    @Override
-    public List<SuMenuLoginResponseImpl> getMenuLogin() {
-        return service.menuReturn(repository.getAllMenuLoginResponse());
     }
 
     @Override
@@ -76,19 +54,6 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
             entity.setRoleName(request.getRoleName());
             entity.setId(repository.save(entity).getId());
 
-            List<RoleObjectEntity> listRoles = request.getObject().stream().map(el -> {
-                ObjectsEntity objectsEntity = objectManagementRepository.findById(el).orElse(null);
-                if (objectsEntity != null) {
-                    RoleObjectEntity roleObjectEntity = new RoleObjectEntity();
-                    roleObjectEntity.setRolesEntityId(entity);
-                    roleObjectEntity.setObjectsEntityId(objectsEntity);
-                    roleObjectEntity.setIsActive(ActiveStatus.ACTIVE);
-                    return roleObjectEntity;
-                }
-                return null;
-            }).filter(el -> el != null).collect(Collectors.toList());
-
-            roleObjectManagementRepository.saveAll(listRoles);
             return repository.save(entity);
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,41 +74,7 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
         entity.setRoleCode(request.getRoleCode());
         entity.setRoleName(request.getRoleName());
 
-        Map<UUID, RoleObjectEntity> roleObjectMap = getAllRoleObjectByIdRole(request.getId());
-
-        roleObjectManagementRepository.saveAll(roleObjectMap.values().stream().map(el -> {
-            el.setIsActive(ActiveStatus.NOT_ACTIVE);
-            return el;
-        }).collect(Collectors.toList()));
-
-        List<RoleObjectEntity> listRoles = request.getObject().stream().map(el -> {
-            ObjectsEntity objectsEntity = objectManagementRepository.findById(el).orElse(null);
-            if (objectsEntity != null) {
-                RoleObjectEntity roleObjectEntity;
-                if (roleObjectMap.containsKey(objectsEntity.getId())) {
-                    roleObjectEntity = roleObjectMap.get(objectsEntity.getId());
-                } else {
-                    roleObjectEntity = new RoleObjectEntity();
-                    roleObjectEntity.setRolesEntityId(entity);
-                    roleObjectEntity.setObjectsEntityId(objectsEntity);
-                }
-                roleObjectEntity.setIsActive(ActiveStatus.ACTIVE);
-                return roleObjectEntity;
-            }
-            return null;
-        }).filter(el -> el != null).collect(Collectors.toList());
-
-        roleObjectManagementRepository.saveAll(listRoles);
-
         return repository.save(entity);
-    }
-
-    public Map<UUID, RoleObjectEntity> getAllRoleObjectByIdRole(UUID id) {
-        Map<UUID, RoleObjectEntity> roleObjectEntityMap = new HashMap<>();
-        roleObjectManagementRepository.getAllRoleObjectByRoleId(id).stream().forEach(el -> {
-            roleObjectEntityMap.put(el.getObjectsEntityId().getId(), el);
-        });
-        return roleObjectEntityMap;
     }
 
     @Override
@@ -170,7 +101,6 @@ public class SuRoleManagementServiceImpl implements SuRoleManagementService {
         request.setId(rolesEntity.get().getId());
         request.setRoleCode(rolesEntity.get().getRoleCode());
         request.setRoleName(rolesEntity.get().getRoleName());
-        request.setRolesObjectDetailRequests(roleObjectManagementRepository.getRoleObjectDetail(id));
 
         return request;
     }

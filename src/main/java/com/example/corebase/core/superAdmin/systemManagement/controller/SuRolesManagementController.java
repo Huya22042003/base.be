@@ -50,9 +50,4 @@ public class SuRolesManagementController {
     public ResponseObject detailRoles(@PathVariable(name = "id") String id) {
         return new ResponseObject(service.detailRoles(UUID.fromString(id)));
     }
-
-    @GetMapping("/get-list-object")
-    public ResponseObject getAllObject() {
-        return new ResponseObject(service.getMenuLogin());
-    }
 }

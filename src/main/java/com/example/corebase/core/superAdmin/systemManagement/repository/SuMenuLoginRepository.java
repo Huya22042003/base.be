@@ -23,13 +23,15 @@ public interface SuMenuLoginRepository extends ObjectsRepository {
              fn_code_name(o."type") as "type",
             o.order_by
         from objects_entity o
-        join user_object uo on uo.object_id = o.id
-        join users u on u.id = uo.user_id
+        join object_element_group oeg on o.id = oeg.object_id
+        join object_groups og on og.id = oeg.object_group_id
+        join staff_object_group sog on sog.id = sog.object_group_id
+        join staff_entity se on se.id = sog.staff_id
         where o.type = 'OBJECT_TYPE_1'
-        and u.full_name = :fullName
+        and se.username = :fullName
         and o.is_active = 1
         and o.is_start = 1
-        and uo.is_active = 1
+        and se.is_active = 1
         """, nativeQuery = true)
     List<SuMenuLoginResponse> getAllMenuLoginResponse(@Param("fullName") String fullName);
 }

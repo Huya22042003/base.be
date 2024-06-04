@@ -28,27 +28,18 @@ public class DBGenerator implements CommandLineRunner {
     private PremiumTypesRepository premiumTypesRepository;
 
     @Autowired
-    private RoleObjectRepository roleObjectRepository;
-
-    @Autowired
-    private UserObjectRepository userObjectRepository;
-
-    @Autowired
     private UserPremiumRepository userPremiumRepository;
 
     @Autowired
     private UsersRepository usersRepository;
 
     @Autowired
-    private UserRoleRepository userRoleRepository;
-
-    @Autowired
     private CodeMngRepository codeMngRepository;
 
     @Override
     public void run(String... args) throws Exception {
+        // code mng
         CodeMngEntity codeMngEntity = new CodeMngEntity();
-        codeMngEntity.setIsActive(ActiveStatus.ACTIVE);
         codeMngEntity.setCdCategory("OBJECT_TYPE");
         codeMngEntity.setCdId("OBJECT_TYPE_1");
         codeMngEntity.setCdName("Menu");
@@ -56,93 +47,98 @@ public class DBGenerator implements CommandLineRunner {
         codeMngRepository.save(codeMngEntity);
 
         CodeMngEntity codeMngEntity1 = new CodeMngEntity();
-        codeMngEntity1.setIsActive(ActiveStatus.ACTIVE);
         codeMngEntity1.setCdCategory("OBJECT_TYPE");
         codeMngEntity1.setCdId("OBJECT_TYPE_2");
         codeMngEntity1.setCdName("Tool");
         codeMngEntity1.setCdKey("base.common.code.object.tool");
         codeMngRepository.save(codeMngEntity1);
 
+        CodeMngEntity codeMngEntity2 = new CodeMngEntity();
+        codeMngEntity.setCdCategory("OBJECT_TYPE");
+        codeMngEntity.setCdId("OBJECT_TYPE_3");
+        codeMngEntity.setCdName("Api");
+        codeMngEntity.setCdKey("base.common.code.object.api");
+        codeMngRepository.save(codeMngEntity2);
+
+        CodeMngEntity codeMngEntity3 = new CodeMngEntity();
+        codeMngEntity3.setCdCategory("CONDITION_TYPE");
+        codeMngEntity3.setCdId("CONDITION_TYPE_1");
+        codeMngEntity3.setCdName("Không có điều kiện");
+        codeMngEntity3.setCdKey("base.common.code.condition.no_condition");
+        codeMngRepository.save(codeMngEntity3);
+
+        CodeMngEntity codeMngEntity4 = new CodeMngEntity();
+        codeMngEntity4.setCdCategory("CONDITION_TYPE");
+        codeMngEntity4.setCdId("CONDITION_TYPE_2");
+        codeMngEntity4.setCdName("Lượt dùng tối đa");
+        codeMngEntity4.setCdKey("base.common.code.condition.use_max");
+        codeMngRepository.save(codeMngEntity4);
+
+        CodeMngEntity codeMngEntity5 = new CodeMngEntity();
+        codeMngEntity5.setCdCategory("CONDITION_TYPE");
+        codeMngEntity5.setCdId("CONDITION_TYPE_3");
+        codeMngEntity5.setCdName("Thời gian sử dụng");
+        codeMngEntity5.setCdKey("base.common.code.condition.use_time");
+        codeMngRepository.save(codeMngEntity5);
+
+        CodeMngEntity codeMngEntity6 = new CodeMngEntity();
+        codeMngEntity6.setCdCategory("ACTIVE_TYPE");
+        codeMngEntity6.setCdId("ACTIVE_TYPE_1");
+        codeMngEntity6.setCdName("Hoạt động");
+        codeMngEntity6.setCdKey("base.common.code.active.active");
+        codeMngRepository.save(codeMngEntity6);
+
+        CodeMngEntity codeMngEntity7 = new CodeMngEntity();
+        codeMngEntity7.setCdCategory("ACTIVE_TYPE");
+        codeMngEntity7.setCdId("ACTIVE_TYPE_2");
+        codeMngEntity7.setCdName("Không hoạt động");
+        codeMngEntity7.setCdKey("base.common.code.active.unactive");
+        codeMngRepository.save(codeMngEntity7);
+
+        CodeMngEntity codeMngEntity8 = new CodeMngEntity();
+        codeMngEntity8.setCdCategory("PREMIUM_TYPE");
+        codeMngEntity8.setCdId("PREMIUM_TYPE_1");
+        codeMngEntity8.setCdName("Miễn phí");
+        codeMngEntity8.setCdKey("base.common.code.premium.free");
+        codeMngRepository.save(codeMngEntity8);
+
+        CodeMngEntity codeMngEntity9 = new CodeMngEntity();
+        codeMngEntity9.setCdCategory("PREMIUM_TYPE");
+        codeMngEntity9.setCdId("PREMIUM_TYPE_2");
+        codeMngEntity9.setCdName("Trả phí");
+        codeMngEntity9.setCdKey("base.common.code.premium.payFee");
+        codeMngRepository.save(codeMngEntity9);
+
+        CodeMngEntity codeMngEntity10 = new CodeMngEntity();
+        codeMngEntity10.setCdCategory("DEFAULT_TYPE");
+        codeMngEntity10.setCdId("DEFAULT_TYPE_1");
+        codeMngEntity10.setCdName("Mặc định");
+        codeMngEntity10.setCdKey("base.common.code.default.default");
+        codeMngRepository.save(codeMngEntity10);
+
+        CodeMngEntity codeMngEntity11 = new CodeMngEntity();
+        codeMngEntity11.setCdCategory("DEFAULT_TYPE");
+        codeMngEntity11.setCdId("DEFAULT_TYPE_2");
+        codeMngEntity11.setCdName("Lớp thường");
+        codeMngEntity11.setCdKey("base.common.code.default.custom");
+        codeMngRepository.save(codeMngEntity11);
+
+        // ROLE
         RolesEntity rolesEntity = new RolesEntity();
-        rolesEntity.setRoleCode("ADMIN");
-        rolesEntity.setRoleName("admin");
-        rolesEntity.setIsActive(ActiveStatus.ACTIVE);
-        rolesEntity.setId(rolesRepository.save(rolesEntity).getId());
+        rolesEntity.setRoleName("Supper Admin");
+        rolesEntity.setRoleCode("SUPPER_ADMIN");
+        rolesRepository.save(rolesEntity);
 
-        ObjectsEntity objectsEntity = new ObjectsEntity();
-        objectsEntity.setIsActive(ActiveStatus.ACTIVE);
-        objectsEntity.setCode("QLHT");
-        objectsEntity.setName("Quản lý hệ thống");
-        objectsEntity.setOrderBy(0L);
-        objectsEntity.setIcons("circle-exclamation");
-        objectsEntity.setType(codeMngEntity.getCdId());
-        objectsEntity.setKey("base.menu.system.management");
-        objectsEntity.setIsActive(ActiveStatus.ACTIVE);
-        objectsEntity.setIsStart(ActiveStatus.ACTIVE);
-        objectsEntity.setUrl("/supper-admin/system-management/objects");
-        objectsEntity.setId(objectsRepository.save(objectsEntity).getId());
+        RolesEntity rolesEntity1 = new RolesEntity();
+        rolesEntity1.setRoleName("Admin");
+        rolesEntity1.setRoleCode("ADMIN");
+        rolesRepository.save(rolesEntity1);
 
-        ObjectsEntity objectsEntity1 = new ObjectsEntity();
-        objectsEntity1.setIsActive(ActiveStatus.ACTIVE);
-        objectsEntity1.setCode("QLHT_ROLE");
-        objectsEntity1.setName("Quản lý phân quyền");
-        objectsEntity1.setOrderBy(0L);
-        objectsEntity1.setIcons("circle-exclamation");
-        objectsEntity1.setType(codeMngEntity.getCdId());
-        objectsEntity1.setKey("base.menu.system.author");
-        objectsEntity1.setParentId(objectsEntity.getId());
-        objectsEntity1.setIsActive(ActiveStatus.ACTIVE);
-        objectsEntity1.setType(codeMngEntity.getCdId());
-        objectsEntity1.setIsStart(ActiveStatus.ACTIVE);
-        objectsEntity1.setUrl("/supper-admin/system-management/roles");
-        objectsEntity1.setId(objectsRepository.save(objectsEntity1).getId());
+        RolesEntity rolesEntity2 = new RolesEntity();
+        rolesEntity2.setRoleName("Staff");
+        rolesEntity2.setRoleCode("STAFF");
+        rolesRepository.save(rolesEntity2);
 
-        ObjectsEntity objectsEntity2 = new ObjectsEntity();
-        objectsEntity2.setIsActive(ActiveStatus.ACTIVE);
-        objectsEntity2.setCode("QLHT_USER");
-        objectsEntity2.setName("Quản lý người dùng");
-        objectsEntity2.setOrderBy(1L);
-        objectsEntity2.setIcons("circle-exclamation");
-        objectsEntity2.setKey("base.menu.system.user");
-        objectsEntity2.setIsActive(ActiveStatus.ACTIVE);
-        objectsEntity2.setParentId(objectsEntity.getId());
-        objectsEntity2.setType(codeMngEntity.getCdId());
-        objectsEntity2.setIsStart(ActiveStatus.ACTIVE);
-        objectsEntity2.setUrl("/supper-admin/system-management/users");
-        objectsEntity2.setId(objectsRepository.save(objectsEntity2).getId());
-
-
-        UsersEntity usersEntity = new UsersEntity();
-        usersEntity.setIsActive(ActiveStatus.ACTIVE);
-        usersEntity.setUserName("admin");
-        usersEntity.setPassword("admin");
-        usersEntity.setFullName("admin");
-        usersEntity.setEmail("admin");
-        usersEntity.setId(usersRepository.save(usersEntity).getId());
-
-        UserObjectEntity userObjectEntity = new UserObjectEntity();
-        userObjectEntity.setObjectId(objectsEntity);
-        userObjectEntity.setUserid(usersEntity);
-        userObjectEntity.setIsActive(ActiveStatus.ACTIVE);
-        userObjectRepository.save(userObjectEntity);
-
-        UserObjectEntity userObjectEntity1 = new UserObjectEntity();
-        userObjectEntity1.setObjectId(objectsEntity1);
-        userObjectEntity1.setUserid(usersEntity);
-        userObjectEntity1.setIsActive(ActiveStatus.ACTIVE);
-        userObjectRepository.save(userObjectEntity1);
-
-        UserObjectEntity userObjectEntity2 = new UserObjectEntity();
-        userObjectEntity2.setObjectId(objectsEntity2);
-        userObjectEntity2.setUserid(usersEntity);
-        userObjectEntity2.setIsActive(ActiveStatus.ACTIVE);
-        userObjectRepository.save(userObjectEntity2);
-
-        UserRoleEntity userRoleEntity = new UserRoleEntity();
-        userRoleEntity.setUserId(usersEntity);
-        userRoleEntity.setRolesEntityId(rolesEntity);
-        userRoleEntity.setIsActive(ActiveStatus.ACTIVE);
-        userRoleRepository.save(userRoleEntity);
 
     }
 
