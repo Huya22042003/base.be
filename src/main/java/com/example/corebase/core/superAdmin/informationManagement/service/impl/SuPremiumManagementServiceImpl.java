@@ -1,8 +1,10 @@
 package com.example.corebase.core.superAdmin.informationManagement.service.impl;
 
 import com.example.corebase.core.base.model.PageableObject;
+import com.example.corebase.core.superAdmin.informationManagement.model.request.SuObjectGroupFilterRequest;
 import com.example.corebase.core.superAdmin.informationManagement.model.request.SuPremiumTypeCreateRequest;
 import com.example.corebase.core.superAdmin.informationManagement.model.request.SuPremiumTypeFilterRequest;
+import com.example.corebase.core.superAdmin.informationManagement.model.response.SuObjectGroupAddResponse;
 import com.example.corebase.core.superAdmin.informationManagement.model.response.SuPremiumManagementResponse;
 import com.example.corebase.core.superAdmin.informationManagement.repository.SuPremiumManagementRepository;
 import com.example.corebase.core.superAdmin.informationManagement.service.SuPremiumManagementService;
@@ -73,5 +75,10 @@ public class SuPremiumManagementServiceImpl implements SuPremiumManagementServic
     @Override
     public List<SimpleObjectResponse> getListRoles() {
         return repository.getAllRolesActive();
+    }
+
+    @Override
+    public PageableObject<SuObjectGroupAddResponse> getAllObjectGroup(SuObjectGroupFilterRequest request) {
+        return new PageableObject<>(repository.getAllObjectGroup(request, PageableCommon.getPageable(request)));
     }
 }

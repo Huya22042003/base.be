@@ -1,6 +1,7 @@
 package com.example.corebase.core.superAdmin.informationManagement.controller;
 
 import com.example.corebase.core.base.model.ResponseObject;
+import com.example.corebase.core.superAdmin.informationManagement.model.request.SuObjectGroupFilterRequest;
 import com.example.corebase.core.superAdmin.informationManagement.model.request.SuPremiumTypeCreateRequest;
 import com.example.corebase.core.superAdmin.informationManagement.model.request.SuPremiumTypeFilterRequest;
 import com.example.corebase.core.superAdmin.informationManagement.service.SuPremiumManagementService;
@@ -49,6 +50,11 @@ public class SuPremiumManagementController {
     @GetMapping("/all-role")
     public ResponseObject getAllRoleCode() {
         return new ResponseObject(service.getListRoles());
+    }
+
+    @PostMapping("/all-object-group")
+    public ResponseObject getAllObjectGroup(@RequestBody SuObjectGroupFilterRequest request) {
+        return new ResponseObject(service.getAllObjectGroup(request));
     }
 
 }

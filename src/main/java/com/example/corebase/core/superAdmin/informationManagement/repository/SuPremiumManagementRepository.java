@@ -1,6 +1,8 @@
 package com.example.corebase.core.superAdmin.informationManagement.repository;
 
+import com.example.corebase.core.superAdmin.informationManagement.model.request.SuObjectGroupFilterRequest;
 import com.example.corebase.core.superAdmin.informationManagement.model.request.SuPremiumTypeFilterRequest;
+import com.example.corebase.core.superAdmin.informationManagement.model.response.SuObjectGroupAddResponse;
 import com.example.corebase.core.superAdmin.informationManagement.model.response.SuPremiumManagementResponse;
 import com.example.corebase.repository.PremiumTypesRepository;
 import com.example.corebase.util.SimpleObjectResponse;
@@ -49,5 +51,21 @@ public interface SuPremiumManagementRepository extends PremiumTypesRepository {
         where r.is_active = 1
     """, nativeQuery = true)
     List<SimpleObjectResponse> getAllRolesActive();
+
+    @Query(value = """
+        	select
+        		og.id as id,
+        		og.code as code,
+        		og.name as name,
+        		og.sub_name as subName,
+        		og.status as status 
+        	from object_groups og
+        	where og.is_active = 1
+            AND (:#{#req.code == NULL ? '' : #req.code} = '' OR og.code LIKE %:#{#req.code}%)
+            AND (:#{#req.name == NULL ? '' : #req.name} = '' OR og.name LIKE %:#{#req.name}%)
+            AND (:#{#req.subName == NULL ? '' : #req.subName} = '' OR og.sub_name LIKE %:#{#req.subName}%)
+            AND (og.role_id = :#{#req.roleId})
+    """, nativeQuery = true)
+    Page<SuObjectGroupAddResponse> getAllObjectGroup(@Param("req")SuObjectGroupFilterRequest req, Pageable pageable);
 
 }
