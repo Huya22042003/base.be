@@ -2,18 +2,13 @@ package com.example.corebase.core.common.service;
 
 import com.example.corebase.core.common.service.dto.FileMngDto;
 import com.example.corebase.core.common.service.dto.FileUploadedInfoDto;
-import com.example.corebase.entity.FileMngEntity;
-import com.example.corebase.repository.FileMngRepository;
+import com.example.corebase.repository.common.FileMngRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.io.IOException;
-import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor

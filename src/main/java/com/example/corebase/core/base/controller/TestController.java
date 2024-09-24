@@ -1,8 +1,8 @@
 package com.example.corebase.core.base.controller;
 
-import com.example.corebase.util.EmailRequest;
-import com.example.corebase.util.EmailSender;
-import com.example.corebase.util.Sender;
+import com.example.corebase.util.emailCommon.EmailRequest;
+import com.example.corebase.util.emailCommon.EmailSender;
+import com.example.corebase.util.emailCommon.Sender;
 import jakarta.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

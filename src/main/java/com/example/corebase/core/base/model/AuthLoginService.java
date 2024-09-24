@@ -1,7 +1,5 @@
 package com.example.corebase.core.base.model;
 
-import com.example.corebase.entity.UsersEntity;
-
 public interface AuthLoginService {
 
     Long getIdUser();
@@ -14,6 +12,6 @@ public interface AuthLoginService {
 
     String getPicture();
 
-    UsersEntity getAuth();
+//    UsersEntity getAuth();
 
 }

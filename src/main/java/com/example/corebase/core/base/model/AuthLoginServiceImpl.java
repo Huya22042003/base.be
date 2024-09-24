@@ -1,8 +1,6 @@
 package com.example.corebase.core.base.model;
 
-import com.example.corebase.entity.UsersEntity;
 import com.example.corebase.infrastructure.constant.SessionConstant;
-import com.example.corebase.repository.UsersRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,8 +11,8 @@ public class AuthLoginServiceImpl implements AuthLoginService {
     @Autowired
     private HttpSession httpSession;
 
-    @Autowired
-    private UsersRepository usersRepository;
+//    @Autowired
+//    private UsersRepository usersRepository;
 
     @Override
     public Long getIdUser() {
@@ -41,8 +39,8 @@ public class AuthLoginServiceImpl implements AuthLoginService {
         return (String) httpSession.getAttribute(SessionConstant.PICTURE);
     }
 
-    @Override
-    public UsersEntity getAuth() {
-        return usersRepository.findAll().get(0);
-    }
+//    @Override
+//    public UsersEntity getAuth() {
+//        return usersRepository.findAll().get(0);
+//    }
 }

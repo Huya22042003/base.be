@@ -1,15 +1,9 @@
 package com.example.corebase.infrastructure.security;
 
-import com.example.corebase.entity.StaffEntity;
-import com.example.corebase.entity.UsersEntity;
-import com.example.corebase.infrastructure.constant.KeyModule;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 public class CustomUserDetails implements UserDetails {
 
@@ -23,21 +17,21 @@ public class CustomUserDetails implements UserDetails {
         this.authorities = authorities;
     }
 
-    public CustomUserDetails(UsersEntity usersEntity) {
-        this.username = usersEntity.getUserName() + KeyModule.MODULE_CLIENT;
-        this.password = usersEntity.getPassword();
-        this.authorities = Arrays.stream((usersEntity.getRoleId() !=null ? usersEntity.getRoleId().getRoleCode() : "USER").split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
-    }
-
-    public CustomUserDetails(StaffEntity staffEntity) {
-        this.username = staffEntity.getUsername() + KeyModule.MODULE_STAFF;
-        this.password = staffEntity.getPassword();
-        this.authorities = Arrays.stream((staffEntity.getRoleId() !=null ? staffEntity.getRoleId().getRoleCode() : "USER").split(","))
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
-    }
+//    public CustomUserDetails(UsersEntity usersEntity) {
+//        this.username = usersEntity.getUserName() + KeyModule.MODULE_CLIENT;
+//        this.password = usersEntity.getPassword();
+//        this.authorities = Arrays.stream((usersEntity.getRoleId() !=null ? usersEntity.getRoleId().getRoleCode() : "USER").split(","))
+//                .map(SimpleGrantedAuthority::new)
+//                .collect(Collectors.toList());
+//    }
+//
+//    public CustomUserDetails(StaffEntity staffEntity) {
+//        this.username = staffEntity.getUsername() + KeyModule.MODULE_STAFF;
+//        this.password = staffEntity.getPassword();
+//        this.authorities = Arrays.stream((staffEntity.getRoleId() !=null ? staffEntity.getRoleId().getRoleCode() : "USER").split(","))
+//                .map(SimpleGrantedAuthority::new)
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

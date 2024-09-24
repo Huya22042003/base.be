@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PremiumDto {
 
-    private UUID id;
+    private String id;
 
     private String name;
 

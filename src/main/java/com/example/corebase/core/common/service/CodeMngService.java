@@ -1,9 +1,8 @@
 package com.example.corebase.core.common.service;
 
 import com.example.corebase.core.common.service.dto.CodeMngDTO;
-import com.example.corebase.entity.CodeMngEntity;
-import com.example.corebase.repository.CodeMngRepository;
-import com.example.corebase.util.LanguageCommon;
+import com.example.corebase.repository.common.CodeMngRepository;
+import com.example.corebase.util.languageCommon.LanguageCommon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

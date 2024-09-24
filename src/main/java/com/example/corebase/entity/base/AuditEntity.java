@@ -1,6 +1,5 @@
 package com.example.corebase.entity.base;
 
-import com.example.corebase.infrastructure.constant.ActiveStatus;
 import com.example.corebase.infrastructure.listener.AuditEntityListener;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -8,7 +7,7 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,13 +16,13 @@ import java.util.Date;
 public abstract class AuditEntity {
 
     @Column(updatable = false)
-    private ActiveStatus isActive;
+    private String delYn;
 
     @Column(updatable = false)
-    private Long createdDate;
+    private LocalDateTime createdDate;
 
     @Column
-    private Long lastModifiedDate;
+    private LocalDateTime lastModifiedDate;
 
     @Column(updatable = false)
     private String createdBy;
