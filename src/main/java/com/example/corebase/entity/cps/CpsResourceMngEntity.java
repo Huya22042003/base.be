@@ -24,11 +24,11 @@ public class CpsResourceMngEntity extends PrimaryBase {
 
     private String role;
 
-    private String menu;
-
     private String type;
 
     private String useYn;
 
     private String module;
+
+    private String method;
 }

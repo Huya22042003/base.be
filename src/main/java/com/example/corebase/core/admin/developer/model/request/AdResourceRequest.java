@@ -1,4 +1,4 @@
-package com.example.corebase.core.admin.developer.model.dto;
+package com.example.corebase.core.admin.developer.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

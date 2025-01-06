@@ -24,4 +24,6 @@ public class CpsRoleMngEntity extends PrimaryBase {
     private String name;
 
     private String note;
+
+    private String useYn;
 }

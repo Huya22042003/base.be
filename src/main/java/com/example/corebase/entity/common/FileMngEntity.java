@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -37,5 +35,5 @@ public class FileMngEntity extends PrimaryBase {
     private String producerCode;
 
     @Column(name = "producer_id")
-    private UUID producerId;
+    private String producerId;
 }

@@ -33,4 +33,6 @@ public class CpsMenuMngEntity extends PrimaryBase {
     private String orderBy;
 
     private String keyLang;
+
+    private String type;
 }

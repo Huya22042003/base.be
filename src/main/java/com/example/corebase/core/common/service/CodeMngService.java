@@ -40,8 +40,7 @@ public class CodeMngService {
             CodeMngDTO codeMngDTO = new CodeMngDTO();
             codeMngDTO.setValue(code.getCdId());
             codeMngDTO.setType(code.getType());
-            codeMngDTO.setLabel(languageCommon.getMessageProperties(code.getCdKey()) == "" ?
-                    code.getCdName() : languageCommon.getMessageProperties(code.getCdKey()));
+            codeMngDTO.setLabel(code.getCdName());
             return codeMngDTO;
         }).collect(Collectors.toList());
     }

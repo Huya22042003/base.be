@@ -5,6 +5,9 @@ public enum SequencesConstant {
     CODE_MNG("CODE_MNG", "CODE"),
     FILE_MNG("FILE_MNG", "FILE"),
     CPS_MENU_MNG("CPS_MENU_MNG", "CMM"),
+    CPS_MODULE_MNG("CPS_MODULE_MNG", "CMD"),
+    CPS_PERMISSION("CPS_PERMISSION", "CPM"),
+    CPS_API_MENU_PERMISSION("CPS_API_MENU_PERMISSION", "CAMP"),
     TABLE_THREE("TBL_THREE", "T3");
 
     private final String tableName;

@@ -5,7 +5,9 @@ import com.example.corebase.core.admin.developer.model.request.AdMenuRequest;
 import com.example.corebase.core.admin.developer.service.AdMenuMngService;
 import com.example.corebase.core.base.model.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,7 +47,7 @@ public class AdMenuMngController {
      * @param req
      * @return
      */
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseObject updateMenu(@RequestBody AdMenuRequest req) {
         return new ResponseObject(service.updateMenu(req));
     }
@@ -56,7 +58,7 @@ public class AdMenuMngController {
      * @param req
      * @return
      */
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseObject deleteMenu(@RequestBody String req) {
         return new ResponseObject(service.deleteMenu(req));
     }
@@ -71,6 +73,7 @@ public class AdMenuMngController {
     public ResponseObject goToDetail(@RequestBody String id) {
         return new ResponseObject(service.getMenuDetail(id));
     }
+
     /**
      * Get Page Menu
      * @api /admin/menu/get-form

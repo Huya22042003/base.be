@@ -22,9 +22,8 @@ public class CpsApiMenuPermissionsEntity extends PrimaryBase {
 
     private String apiId;
 
-    private String roleId;
+    private String permissionId;
 
-    private String name;
-
-    private String note;
+    // is menu - is api
+    private String type;
 }

@@ -2,7 +2,6 @@ package com.example.corebase.core.common.controller;
 
 import com.example.corebase.core.base.model.ResponseObject;
 import com.example.corebase.core.common.service.CodeMngService;
-import com.example.corebase.core.common.service.dto.CodeMngDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +35,7 @@ public class CodeMngController {
     }
 
     @GetMapping("/listCode/{upcIdList}")
-    public ResponseObject getCodeByUpIdList(@PathVariable(name="upcIdList") List<String> upcIdList) {
+    public ResponseObject getCodeByUpIdList(@PathVariable(name = "upcIdList") List<String> upcIdList) {
         try {
             return new ResponseObject(codeMngService.getListCode(upcIdList));
         } catch (Exception e) {

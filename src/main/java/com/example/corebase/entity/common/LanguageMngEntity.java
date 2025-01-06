@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "LANGUAGE_MNG_ENTITY")
+@Entity(name = "LANGUAGE_MNG")
 public class LanguageMngEntity extends PrimaryBase {
 
     @Column(name = "name")

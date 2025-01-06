@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ResponseObject {
+public class ResponseObject<P> {
 
     private boolean isSuccess = false;
     private Object data;

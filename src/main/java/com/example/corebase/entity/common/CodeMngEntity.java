@@ -26,8 +26,8 @@ public class CodeMngEntity {
     @Column(name = "up_cd_id")
     private String upCdId;
 
-    @Column(name = "category")
-    private String category;
+    @Column(name = "order_by")
+    private String orderBy;
 
     @Column(name = "cd_name")
     private String cdName;

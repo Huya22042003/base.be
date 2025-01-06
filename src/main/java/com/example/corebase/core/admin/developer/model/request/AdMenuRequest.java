@@ -25,4 +25,8 @@ public class AdMenuRequest extends IsIdentifiedRequest {
     private String module;
 
     private String keyLang;
+
+    private String orderBy;
+
+    private String type;
 }

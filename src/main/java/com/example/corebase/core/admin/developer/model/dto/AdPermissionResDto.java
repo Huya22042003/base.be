@@ -9,23 +9,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdApiMenuResDto {
+public class AdPermissionResDto {
 
     private String id;
 
-    private String menuId;
-
-    private String menuNm;
-
-    private String apiId;
-
-    private String apiNm;
-
-    private String roleId;
-
-    private String
+    private String roleNm;
 
     private String name;
 
-    private String note;
+    private String defaultNm;
+
+    private String useNm;
 }

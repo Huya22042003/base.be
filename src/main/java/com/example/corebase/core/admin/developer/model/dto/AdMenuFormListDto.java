@@ -15,4 +15,6 @@ import java.util.List;
 public class AdMenuFormListDto {
 
     private List<CodeMngDTO> listMenu;
+
+    private List<CodeMngDTO> listModule;
 }

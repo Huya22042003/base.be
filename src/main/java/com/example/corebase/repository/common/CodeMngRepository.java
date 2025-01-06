@@ -12,7 +12,7 @@ import java.util.List;
 public interface CodeMngRepository extends JpaRepository<CodeMngEntity, String> {
 
     @Query(value = """
-                select cd_id as cdId, cd_key as cdKey , cd_name as cdName, cd_category as type from code_mng cm where cd_category in :listCdCategory
+                select cd_id as cdId, cd_key as cdKey , cd_name as cdName, up_cd_id as type from code_mng cm where up_cd_id in :listCdCategory
             """, nativeQuery = true)
     List<CodeMngResponse> findByUpCdIdIn(@Param("listCdCategory") List<String> listCdCategory);
 
