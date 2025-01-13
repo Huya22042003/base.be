@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditEntityListener.class)
 public abstract class AuditEntity {
 
+    @Column
     private String delYn;
 
     @Column(updatable = false)
