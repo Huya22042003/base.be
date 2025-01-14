@@ -27,4 +27,6 @@ public class BannerEntity extends AuditEntity implements Serializable {
     private String bannerType;
 
     private String useYn;
+
+    private String url;
 }

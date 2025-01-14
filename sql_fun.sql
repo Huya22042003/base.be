@@ -8,7 +8,7 @@ CREATE TABLE articel (
                          articel_seq VARCHAR(100),
                          content TEXT(65535),
                          title VARCHAR(100),
-                         `desc` VARCHAR(100),
+                         description VARCHAR(100),
                          is_show VARCHAR(1),
                          temp_yn VARCHAR(1),
                          created_date DATETIME,
@@ -257,6 +257,7 @@ CREATE TABLE sys_user_role (
 CREATE TABLE user_mng (
                           created_date DATETIME,
                           last_modified_date DATETIME,
+                          last_modified_date DATETIME,
                           address VARCHAR(255),
                           avatar VARCHAR(255),
                           created_by VARCHAR(255),
@@ -399,7 +400,7 @@ CREATE TABLE category_ref (
 CREATE TABLE menu_cook (
                            menu_cook_seq VARCHAR(100) NOT NULL,
                            title VARCHAR(100),
-                           `desc` VARCHAR(100),
+                           description VARCHAR(100),
                            header LONGTEXT,
                            footer MEDIUMTEXT(16777215),
                            del_yn VARCHAR(1),

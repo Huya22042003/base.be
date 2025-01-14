@@ -19,8 +19,9 @@ import java.io.Serializable;
 public class SysUserRoleEntity implements Serializable {
 
     @Id
+    private String userRoleSeq;
+
     private String roleId;
 
-    @Id
     private String userId;
 }

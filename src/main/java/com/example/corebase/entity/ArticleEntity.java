@@ -1,6 +1,7 @@
 package com.example.corebase.entity;
 
 import com.example.corebase.entity.base.AuditEntity;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -26,7 +27,7 @@ public class ArticleEntity extends AuditEntity implements Serializable {
 
     private String title;
 
-    private String desc;
+    private String description;
 
     private String isShow;
 

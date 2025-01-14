@@ -19,5 +19,5 @@ public class Constants {
 
     public static final String STATE_Y = "Y";
     public static final String STATE_N = "N";
-
+    public static final String BANNER_TYPE_HOME = "BANNER_TYPE_HOME";
 }

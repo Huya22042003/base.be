@@ -19,9 +19,10 @@ import java.io.Serializable;
 public class SysMenuRoleEntity implements Serializable {
 
     @Id
+    private String menuRoleSeq;
+
     private String menuId;
 
-    @Id
     private String roleId;
 
     private String status;
