@@ -1,26 +1,18 @@
-package com.example.corebase.entity;
+package com.example.corebase.core.admin.contentMng.model.dto;
 
-import com.example.corebase.entity.base.AuditEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
-@Table(name = "qa")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class QAEntity extends AuditEntity implements Serializable {
+public class AdQuestionAnswerDetailDTO {
 
-    @Id
     private String qaSeq;
 
     private String title;
@@ -36,8 +28,4 @@ public class QAEntity extends AuditEntity implements Serializable {
     private String userQuestion;
 
     private String userAnswer;
-
-    private String tempYn;
-
-    private String status;
 }

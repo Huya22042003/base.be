@@ -20,4 +20,7 @@ public class Constants {
     public static final String STATE_Y = "Y";
     public static final String STATE_N = "N";
     public static final String BANNER_TYPE_HOME = "BANNER_TYPE_HOME";
+    public static final String Q_A_STATUS_QUESTION = "QUESTION";
+    public static final String Q_A_STATUS_ANSWER = "ANSWER";
+    public static final String Q_A_STATUS_REJECT = "REJECT";
 }

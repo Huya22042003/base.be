@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdBannerResDTO {
+public class AdBannerDetailDTO {
 
     private String bannerSeq;
 

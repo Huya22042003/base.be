@@ -1,16 +1,17 @@
 package com.example.corebase.core.admin.contentMng.model.request;
 
-import com.example.corebase.core.base.model.PageableRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdBannerFilterReq extends PageableRequest {
+public class AdQuestionAnswerReq {
 
-    private String typeCd;
+    private String qaSeq;
+
+    private String answer;
 }

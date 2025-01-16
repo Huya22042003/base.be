@@ -9,13 +9,5 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdBannerResDTO {
-
-    private String bannerSeq;
-
-    private String bannerNm;
-
-    private String useYn;
-
-    private String url;
+public class AdQuestionAnswerResDTO {
 }

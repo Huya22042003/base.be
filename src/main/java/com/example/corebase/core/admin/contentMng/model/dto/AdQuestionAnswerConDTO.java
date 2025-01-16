@@ -1,5 +1,6 @@
 package com.example.corebase.core.admin.contentMng.model.dto;
 
+import com.example.corebase.infrastructure.constant.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,13 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdBannerResDTO {
+public class AdQuestionAnswerConDTO {
 
-    private String bannerSeq;
-
-    private String bannerNm;
-
-    private String useYn;
-
-    private String url;
+    private String delYn = Constants.STATE_N;
 }

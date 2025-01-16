@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdBannerFilterReq extends PageableRequest {
+public class AdQuestionAnswerFilterReq extends PageableRequest {
 
-    private String typeCd;
+    private String userAnswer;
 }

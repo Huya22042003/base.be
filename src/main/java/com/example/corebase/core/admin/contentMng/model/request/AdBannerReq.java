@@ -1,4 +1,4 @@
-package com.example.corebase.core.admin.contentMng.model.dto;
+package com.example.corebase.core.admin.contentMng.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdBannerResDTO {
+public class AdBannerReq {
 
     private String bannerSeq;
 
