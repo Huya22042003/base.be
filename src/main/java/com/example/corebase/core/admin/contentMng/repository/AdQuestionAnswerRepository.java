@@ -21,13 +21,14 @@ public interface AdQuestionAnswerRepository extends QARepository {
             q.qa_seq,
             q.title,
             q.question_date,
-            um.full_name,
-            sm.full_name
+            um.full_name as userQuestion,
+            sm.full_name as userAnswer
         FROM qa q 
         JOIN user_mng um ON q.user_question = um.id AND um.del_yn = :#{#con.delYn}
         LEFT JOIN staff_mng sm ON q.user_answer = sm.id AND sm.del_yn = :#{#con.delYn}
         WHERE q.temp_yn = :#{#con.delYn} 
             AND q.del_yn = :#{#con.delYn}
+        AND (:#{#req.userAnswer} IS NULL OR q.user_question = :#{#req.userAnswer})
     """, nativeQuery = true)
     Page<AdQuestionAnswerResponse> getPageData(@Param("req")AdQuestionAnswerFilterReq req, @Param("con")AdQuestionAnswerConDTO con, Pageable pageable);
 

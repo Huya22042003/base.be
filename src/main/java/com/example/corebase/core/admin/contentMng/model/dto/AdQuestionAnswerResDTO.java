@@ -10,4 +10,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AdQuestionAnswerResDTO {
+
+    private String qaSeq;
+
+    private String title;
+
+    private String questionDate;
+
+    private String userQuestion;
+
+    private String userAnswer;
 }
