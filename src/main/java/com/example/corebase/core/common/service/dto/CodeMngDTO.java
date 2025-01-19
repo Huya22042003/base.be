@@ -15,9 +15,9 @@ public class CodeMngDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String value;
+    private String cdId;
 
-    private String label;
+    private String upCdId;
 
-    private String type;
+    private String cdNm;
 }

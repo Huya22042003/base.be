@@ -1,24 +1,16 @@
-package com.example.corebase.entity.system;
+package com.example.corebase.core.admin.developer.model.dto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-
-@Table(name = "menu")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class SysMenuEntity implements Serializable {
+public class AdMenuDetailDTO {
 
-    @Id
     private String menuId;
 
     private String siteType;
@@ -30,8 +22,6 @@ public class SysMenuEntity implements Serializable {
     private String parentId;
 
     private String displayOrder;
-
-    private String delYn;
 
     private String useYn;
 

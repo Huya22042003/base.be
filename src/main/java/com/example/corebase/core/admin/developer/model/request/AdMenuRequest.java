@@ -1,24 +1,16 @@
-package com.example.corebase.entity.system;
+package com.example.corebase.core.admin.developer.model.request;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-
-@Table(name = "menu")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class SysMenuEntity implements Serializable {
+public class AdMenuRequest {
 
-    @Id
     private String menuId;
 
     private String siteType;

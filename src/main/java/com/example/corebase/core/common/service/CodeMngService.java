@@ -38,9 +38,9 @@ public class CodeMngService {
         List<CodeMngRepository.CodeMngResponse> listResult = codeMngRepository.findByUpCdIdIn(listUpCdId);
         return listResult.stream().map(code -> {
             CodeMngDTO codeMngDTO = new CodeMngDTO();
-            codeMngDTO.setValue(code.getCdId());
-            codeMngDTO.setType(code.getType());
-            codeMngDTO.setLabel(code.getCdName());
+            codeMngDTO.setCdId(code.getCdId());
+            codeMngDTO.setUpCdId(code.getType());
+            codeMngDTO.setCdNm(code.getCdName());
             return codeMngDTO;
         }).collect(Collectors.toList());
     }
