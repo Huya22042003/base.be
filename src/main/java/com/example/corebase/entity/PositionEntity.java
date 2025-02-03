@@ -11,16 +11,20 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-@Table(name = "food_store")
+@Table(name = "position")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class FoodStoreEntity extends AuditEntity implements Serializable {
+public class PositionEntity extends AuditEntity implements Serializable {
 
     @Id
-    private String foodStoreSeq;
+    private String positionSeq;
 
-    private String nm;
+    private String code;
+
+    private String name;
+
+    private String useYn;
 }
