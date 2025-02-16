@@ -9,12 +9,12 @@ import java.util.List;
 public class PageableObject<T> {
 
     private List<T> data;
-    private long totalPages;
+    private long totalRecord;
     private int currentPage;
 
     public PageableObject(Page<T> page) {
         this.data = page.getContent();
-        this.totalPages = page.getTotalPages();
+        this.totalRecord = page.getTotalElements();
         this.currentPage = page.getNumber();
     }
 }

@@ -8,11 +8,11 @@ import org.springframework.data.domain.Sort;
 public class PageableCommon {
 
     public static Pageable getPageable(PageableRequest pageableRequest) {
-        Sort sort = sort(pageableRequest.getSortField(), pageableRequest.getSortType());
+        Sort sort = sort(pageableRequest.getSort(), pageableRequest.getSortType());
         if (sort == null) {
-            return PageRequest.of(pageableRequest.getCurrent(), pageableRequest.getSize());
+            return PageRequest.of(pageableRequest.getPage() - 1, pageableRequest.getSize());
         }
-        return PageRequest.of(pageableRequest.getCurrent(), pageableRequest.getSize(), sort);
+        return PageRequest.of(pageableRequest.getPage() - 1, pageableRequest.getSize(), sort);
     }
 
     private static Sort sort(String sortField, String sortType) {

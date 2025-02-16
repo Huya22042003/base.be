@@ -19,7 +19,8 @@ public class CorsConfig implements CorsConfigurationSource {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(Arrays.asList(domainClients.split(", ")));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH"));
-        corsConfiguration.setAllowedHeaders(Arrays.asList("Content-Type", "sso-token"));
+//        corsConfiguration.setAllowedHeaders(Arrays.asList("Content-Type", "sso-token"));
+        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
         corsConfiguration.setMaxAge(3600L);
         corsConfiguration.setAllowCredentials(true);
         return corsConfiguration;

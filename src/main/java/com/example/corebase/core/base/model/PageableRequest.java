@@ -8,8 +8,8 @@ import lombok.Setter;
 @Setter
 public abstract class PageableRequest {
 
-    private int current = PaginationConstant.DEFAULT_PAGE;
+    private int page = PaginationConstant.DEFAULT_PAGE;
     private int size = PaginationConstant.DEFAULT_SIZE;
-    private String sortField = "createdDate";
+    private String sort = "";
     private String sortType = "";
 }

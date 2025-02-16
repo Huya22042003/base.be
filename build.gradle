@@ -44,7 +44,7 @@ dependencies {
     implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.15'
 
     // config env
-    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
+//    implementation 'me.paulschwarz:spring-dotenv:4.0.0'
 
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui
     implementation group: 'org.springdoc', name: 'springdoc-openapi-starter-webmvc-ui', version: '2.2.0'
@@ -58,6 +58,8 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-aop
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '3.3.3'
+
+    implementation 'org.apache.commons:commons-text:1.12.0'
 
     testImplementation 'org.springframework.security:spring-security-test'
     implementation 'io.jsonwebtoken:jjwt-api:0.11.2'

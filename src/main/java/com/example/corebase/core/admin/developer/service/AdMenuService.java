@@ -7,6 +7,8 @@ import com.example.corebase.core.admin.developer.model.request.AdMenuFilterReque
 import com.example.corebase.core.admin.developer.model.request.AdMenuRequest;
 import com.example.corebase.core.base.model.PageableObject;
 
+import java.util.List;
+
 public interface AdMenuService {
 
     PageableObject<AdMenuResDTO> getPageData(AdMenuFilterRequest req);
@@ -17,5 +19,5 @@ public interface AdMenuService {
 
     Boolean removeData(String id);
 
-    AdMenuForm getDataForm();
+    AdMenuForm getDataForm(List<String> id);
 }

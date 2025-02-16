@@ -1,8 +1,8 @@
 package com.example.corebase.core.admin.developer.controller;
 
-import com.example.corebase.core.admin.developer.model.request.AdMenuFilterRequest;
-import com.example.corebase.core.admin.developer.model.request.AdMenuRequest;
-import com.example.corebase.core.admin.developer.service.AdMenuService;
+import com.example.corebase.core.admin.developer.model.request.AdRoleFilterRequest;
+import com.example.corebase.core.admin.developer.model.request.AdRoleRequest;
+import com.example.corebase.core.admin.developer.service.AdRoleService;
 import com.example.corebase.core.base.model.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,29 +10,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
-@RequestMapping("/a/developer/menu-mng")
-public class AdMenuController {
+@RequestMapping("/a/developer/role-mng")
+public class AdRoleController {
 
     @Autowired
-    private AdMenuService service;
+    private AdRoleService service;
 
     /**
-     * Get Page Menu
-     * @api /a/developer/menu-mng/list
+     * Get Page Role
+     * @api /a/developer/role-mng/list
      * @param req
      * @return
      */
     @PostMapping("/list")
-    public ResponseObject getPageData(@RequestBody AdMenuFilterRequest req) {
+    public ResponseObject getPageData(@RequestBody AdRoleFilterRequest req) {
         return new ResponseObject(service.getPageData(req));
     }
 
     /**
-     * Get Detail Menu
-     * @api /a/developer/menu-mng/detail
+     * Get Detail Role
+     * @api /a/developer/role-mng/detail
      * @param req
      * @return
      */
@@ -42,19 +40,19 @@ public class AdMenuController {
     }
 
     /**
-     * Save Menu
-     * @api /a/developer/menu-mng/save
+     * Save Role
+     * @api /a/developer/role-mng/save
      * @param req
      * @return
      */
     @PostMapping("/save")
-    public ResponseObject saveData(@RequestBody AdMenuRequest req) {
+    public ResponseObject saveData(@RequestBody AdRoleRequest req) {
         return new ResponseObject(service.saveData(req));
     }
 
     /**
-     * Remove Detail Menu
-     * @api /a/developer/menu-mng/remove
+     * Remove Detail Role
+     * @api /a/developer/role-mng/remove
      * @param req
      * @return
      */
@@ -64,14 +62,13 @@ public class AdMenuController {
     }
 
     /**
-     * Get Data Form Menu
-     * @api /a/developer/menu-mng/form
+     * Get Data Form Role
+     * @api /a/developer/role-mng/form
      * @param
      * @return
      */
     @PostMapping("/form")
-    public ResponseObject getDataForm(@RequestBody List<String> id) {
-        return new ResponseObject(service.getDataForm(id));
+    public ResponseObject getDataForm() {
+        return new ResponseObject(service.getFormData());
     }
-
 }

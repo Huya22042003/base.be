@@ -9,13 +9,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdResourceResDTO {
+public class AdRoleResDTO {
 
-    private Long id;
+    private String roleId;
 
-    private String url;
+    private String roleCd;
 
-    private String httpMethod;
+    private String roleNm;
 
-    private String rsNm;
+    private String roleSiteCd;
 }

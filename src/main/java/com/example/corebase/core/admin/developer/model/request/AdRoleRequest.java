@@ -1,24 +1,18 @@
-package com.example.corebase.entity.system;
+package com.example.corebase.core.admin.developer.model.request;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
+import java.util.List;
 
-@Table(name = "sys_role")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-public class SysRoleEntity implements Serializable {
+public class AdRoleRequest {
 
-    @Id
     private String roleId;
 
     private String roleNm;
@@ -28,4 +22,6 @@ public class SysRoleEntity implements Serializable {
     private String roleSiteCd;
 
     private String roleCd;
+
+    private List<AdMenuRoleRequest> listMenu;
 }

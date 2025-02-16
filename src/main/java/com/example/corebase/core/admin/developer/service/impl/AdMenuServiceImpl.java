@@ -12,10 +12,13 @@ import com.example.corebase.core.base.model.PageableObject;
 import com.example.corebase.core.common.service.dto.CodeMngDTO;
 import com.example.corebase.entity.system.SysMenuEntity;
 import com.example.corebase.infrastructure.constant.Constants;
+import com.example.corebase.infrastructure.constant.SequencesConstant;
 import com.example.corebase.infrastructure.exception.BadRequestCustomException;
 import com.example.corebase.util.languageCommon.LanguageCommon;
 import com.example.corebase.util.pageCommon.PageableCommon;
+import com.example.corebase.util.sequenceCommon.SequencesUtil;
 import jakarta.transaction.Transactional;
+import org.apache.commons.lang3.StringUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,6 +37,9 @@ public class AdMenuServiceImpl implements AdMenuService {
 
     @Autowired
     private LanguageCommon languageCommon;
+
+    @Autowired
+    private SequencesUtil sequencesUtil;
 
     @Override
     public PageableObject<AdMenuResDTO> getPageData(AdMenuFilterRequest req) {
@@ -56,6 +62,12 @@ public class AdMenuServiceImpl implements AdMenuService {
     public Boolean saveData(AdMenuRequest req) {
         SysMenuEntity menuEntity = modelMapper.map(req, SysMenuEntity.class);
 
+        if (StringUtils.isEmpty(menuEntity.getMenuId())) {
+            menuEntity.setMenuId(sequencesUtil
+                    .generateSequence(SequencesConstant.CPS_MENU_MNG.getPrefix(),
+                            SequencesConstant.CPS_MENU_MNG.getTableName()));
+        }
+
         repository.save(menuEntity);
         return true;
     }
@@ -65,17 +77,17 @@ public class AdMenuServiceImpl implements AdMenuService {
     public Boolean removeData(String id) {
         SysMenuEntity menuEntity = repository.findByMenuIdAndDelYn(id, Constants.STATE_N)
                 .orElseThrow(() -> new BadRequestCustomException(languageCommon.getMessageProperties("message.notfound")));
-        menuEntity.setDelYn(Constants.STATE_N);
+        menuEntity.setDelYn(Constants.STATE_Y);
 
         repository.save(menuEntity);
         return true;
     }
 
     @Override
-    public AdMenuForm getDataForm() {
+    public AdMenuForm getDataForm(List<String> id) {
         AdMenuForm dataResult = new AdMenuForm();
 
-        List<CodeMngDTO> menuParent = repository.findByParentIdIsNullAndDelYn(Constants.STATE_N)
+        List<CodeMngDTO> menuParent = repository.findByMenuIdNotInAndDelYn(id, Constants.STATE_N)
                 .stream().map(item -> new CodeMngDTO(item.getMenuId(), "", item.getNm())).toList();
         dataResult.setParentList(menuParent);
 

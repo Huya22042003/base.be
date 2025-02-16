@@ -9,13 +9,9 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdResourceResDTO {
+public class AdMenuRoleDetailDTO {
 
-    private Long id;
+    private String menuId;
 
-    private String url;
-
-    private String httpMethod;
-
-    private String rsNm;
+    private String status;
 }
