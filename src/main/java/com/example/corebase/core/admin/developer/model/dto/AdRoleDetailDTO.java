@@ -23,5 +23,5 @@ public class AdRoleDetailDTO {
 
     private String roleCd;
 
-    private List<AdMenuRoleDetailDTO> listMenu;
+    private List<String> listMenu;
 }

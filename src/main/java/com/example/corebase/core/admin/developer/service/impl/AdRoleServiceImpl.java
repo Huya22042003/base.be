@@ -66,8 +66,8 @@ public class AdRoleServiceImpl implements AdRoleService {
 
         AdRoleDetailDTO roleResponse = modelMapper.map(roleEntity, AdRoleDetailDTO.class);
 
-        List<AdMenuRoleDetailDTO> menuRoleEntities = menuRoleRepository.findByRoleId(id)
-                .stream().map((item) -> modelMapper.map(item, AdMenuRoleDetailDTO.class)).toList();
+        List<String> menuRoleEntities = menuRoleRepository.findByRoleId(id)
+                .stream().map(SysMenuRoleEntity::getMenuId).toList();
         roleResponse.setListMenu(menuRoleEntities);
 
         return roleResponse;
@@ -87,7 +87,7 @@ public class AdRoleServiceImpl implements AdRoleService {
 
         List<SysMenuRoleEntity> menuRoleSave = req.getListMenu().stream().map(item -> {
             SysMenuRoleEntity menuRoleEntity = menuRoleEntities.stream()
-                    .filter(menuRole -> menuRole.getMenuId().equals(item.getMenuId()))
+                    .filter(menuRole -> menuRole.getMenuId().equals(item))
                     .findFirst()
                     .orElseGet(() -> {
                         SysMenuRoleEntity newMenuRole = new SysMenuRoleEntity();
@@ -98,8 +98,7 @@ public class AdRoleServiceImpl implements AdRoleService {
                     });
 
             menuRoleEntity.setRoleId(roleEntity.getRoleId());
-            menuRoleEntity.setMenuId(item.getMenuId());
-            menuRoleEntity.setStatus(item.getStatus());
+            menuRoleEntity.setMenuId(item);
             return menuRoleEntity;
         }).toList();
 
@@ -125,10 +124,10 @@ public class AdRoleServiceImpl implements AdRoleService {
     }
 
     @Override
-    public AdRoleFormDTO getFormData() {
+    public AdRoleFormDTO getFormData(String siteCd) {
         AdRoleFormDTO dataResult = new AdRoleFormDTO();
 
-        List<CodeMngDTO> menuParent = menuRepository.findByDelYn(Constants.STATE_N)
+        List<CodeMngDTO> menuParent = menuRepository.findByDelYnAndSiteType(Constants.STATE_N, siteCd)
                 .stream().map(item -> new CodeMngDTO(item.getMenuId(), item.getParentId(), item.getNm())).toList();
 
         dataResult.setListMenu(menuParent);

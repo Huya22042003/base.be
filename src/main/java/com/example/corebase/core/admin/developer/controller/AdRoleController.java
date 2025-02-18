@@ -68,7 +68,7 @@ public class AdRoleController {
      * @return
      */
     @PostMapping("/form")
-    public ResponseObject getDataForm() {
-        return new ResponseObject(service.getFormData());
+    public ResponseObject getDataForm(@RequestBody String siteCd) {
+        return new ResponseObject(service.getFormData(siteCd));
     }
 }

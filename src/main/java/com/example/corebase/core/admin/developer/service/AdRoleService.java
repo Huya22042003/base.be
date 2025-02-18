@@ -17,5 +17,5 @@ public interface AdRoleService {
 
     Boolean removeData(String id);
 
-    AdRoleFormDTO getFormData();
+    AdRoleFormDTO getFormData(String siteCd);
 }

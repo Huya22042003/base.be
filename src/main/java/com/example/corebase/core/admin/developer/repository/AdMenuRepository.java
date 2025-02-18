@@ -38,5 +38,5 @@ public interface AdMenuRepository extends SysMenuRepository {
 
     List<SysMenuEntity> findByMenuIdNotInAndDelYn(List<String> menuId, String delYn);
 
-    List<SysMenuEntity> findByDelYn(String delYn);
+    List<SysMenuEntity> findByDelYnAndSiteType(String delYn, String siteType);
 }

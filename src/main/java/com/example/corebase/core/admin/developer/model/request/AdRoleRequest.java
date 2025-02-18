@@ -23,5 +23,5 @@ public class AdRoleRequest {
 
     private String roleCd;
 
-    private List<AdMenuRoleRequest> listMenu;
+    private List<String> listMenu;
 }
