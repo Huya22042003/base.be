@@ -1,6 +1,5 @@
 package com.example.corebase.core.admin.developer.service.impl;
 
-import com.example.corebase.core.admin.developer.model.dto.AdMenuRoleDetailDTO;
 import com.example.corebase.core.admin.developer.model.dto.AdRoleDetailDTO;
 import com.example.corebase.core.admin.developer.model.dto.AdRoleFormDTO;
 import com.example.corebase.core.admin.developer.model.dto.AdRoleResDTO;
@@ -107,6 +106,7 @@ public class AdRoleServiceImpl implements AdRoleService {
                         .noneMatch(itemSave -> itemSave.getMenuRoleSeq().equals(itemDel.getMenuRoleSeq())))
                 .toList();
 
+        repository.save(roleEntity);
         menuRoleRepository.saveAll(menuRoleSave);
         menuRoleRepository.deleteAll(listDelete);
 
