@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/base/object")
+@RequestMapping("/cmmn/menu")
 public class BaseObjectController {
 
     @Autowired
     private BaseService baseMessageService;
 
-    @GetMapping
+    @GetMapping("/nav-tree")
     public ResponseObject getAllObjectByUser() {
         return new ResponseObject(baseMessageService.getListObjectByUser());
     }

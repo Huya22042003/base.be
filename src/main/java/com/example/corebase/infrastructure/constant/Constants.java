@@ -16,6 +16,9 @@ public class Constants {
         public static final String PROPERTIES_MESSAGE_VN = "message/message.vn.properties";
         public static final String PROPERTIES_MESSAGE_EN = "message/message.en.properties";
     }
+    public static final String ROLE_ADMIN = "10210";
+    public static final String ROLE_STAFF = "10220";
+    public static final String ROLE_CLIENT = "10230";
 
     public static final String STATE_Y = "Y";
     public static final String STATE_N = "N";
